@@ -19,10 +19,10 @@ services:
     container_name: cv-management-system
     image: cv-management-system:1.0.0
     build:
-      context: ./UserService
+      context: ./CvManagementSystem
       dockerfile: Dockerfile
     env_file:
-      - ./UserService/.env
+      - ./CvManagementSystem/.env
     ports:
       - "5176:8080"
     depends_on:
