@@ -42,3 +42,4 @@ You can access premade admin user using credentials:
 email: admin@admin.com
 password: admin
 ```
+*(these credentials work in the deployed version as well)*
