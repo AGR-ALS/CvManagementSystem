@@ -12,7 +12,7 @@ using UserService.DataAccess.Context;
 namespace UserService.DataAccess.Migrations
 {
     [DbContext(typeof(UserServiceDbContext))]
-    [Migration("20260723041334_initial")]
+    [Migration("20260723081824_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace UserService.DataAccess.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("CvManagementSystem.DataAccess.Entitites.CvProject", b =>
+            modelBuilder.Entity("UserService.DataAccess.Entitites.CvProject", b =>
                 {
                     b.Property<Guid>("CvId")
                         .HasColumnType("uuid");
@@ -40,7 +40,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("CvProjects");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.DataAccess.Entitites.PositionTechnology", b =>
+            modelBuilder.Entity("UserService.DataAccess.Entitites.PositionTechnology", b =>
                 {
                     b.Property<Guid>("PositionId")
                         .HasColumnType("uuid");
@@ -55,7 +55,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("PositionTechnologies", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.DataAccess.Entitites.ProjectTechnology", b =>
+            modelBuilder.Entity("UserService.DataAccess.Entitites.ProjectTechnology", b =>
                 {
                     b.Property<Guid>("ProjectId")
                         .HasColumnType("uuid");
@@ -70,7 +70,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("ProjectTechnologies", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.AccessRule", b =>
+            modelBuilder.Entity("UserService.Domain.Models.AccessRule", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,7 +94,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("AccessRule", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.AttributeCategory", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.AttributeCategory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,31 +110,9 @@ namespace UserService.DataAccess.Migrations
                     b.HasAlternateKey("Name");
 
                     b.ToTable("AttributeCategories", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("c83d7576-9fc9-444c-81ed-f8417106f306"),
-                            Name = "AttributeCategory1"
-                        },
-                        new
-                        {
-                            Id = new Guid("79421e86-2141-4505-8272-53219ba4035a"),
-                            Name = "AttributeCategory2"
-                        },
-                        new
-                        {
-                            Id = new Guid("14bf7b07-87d4-406a-9ae8-0e1003b5d416"),
-                            Name = "AttributeCategory3"
-                        },
-                        new
-                        {
-                            Id = new Guid("00676f84-8715-4515-b05f-e5ee5985b56b"),
-                            Name = "AttributeCategory4"
-                        });
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.AttributeDefinition", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.AttributeDefinition", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -160,7 +138,7 @@ namespace UserService.DataAccess.Migrations
                     b.UseTptMappingStrategy();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.AttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.AttributeValue", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -178,7 +156,7 @@ namespace UserService.DataAccess.Migrations
                     b.UseTptMappingStrategy();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.OneOfManyOption", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.OneOfManyOption", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -202,7 +180,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("OneOfManyOptions", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Cv", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Cv", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -233,7 +211,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("Cvs", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Discussion", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Discussion", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -250,7 +228,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("Discussions", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.DiscussionMessage", b =>
+            modelBuilder.Entity("UserService.Domain.Models.DiscussionMessage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -279,7 +257,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("DiscussionMessages", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Position", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Position", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -316,7 +294,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("Positions", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Project", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Project", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -346,7 +324,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("Projects", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Role", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Role", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -379,7 +357,7 @@ namespace UserService.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Technology", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Technology", b =>
                 {
                     b.Property<string>("Name")
                         .HasMaxLength(100)
@@ -390,7 +368,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("Technologies", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Tokens.AccountConfirmationToken", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Tokens.AccountConfirmationToken", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -415,7 +393,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("AccountConfirmationTokens");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Tokens.RefreshToken", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Tokens.RefreshToken", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -440,7 +418,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("RefreshTokens");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.User", b =>
+            modelBuilder.Entity("UserService.Domain.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -478,7 +456,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.UserAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.UserAttributeValue", b =>
                 {
                     b.Property<Guid>("AttributeValueId")
                         .HasColumnType("uuid");
@@ -493,7 +471,7 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("UserAttributeValues", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.UserLikedCvs", b =>
+            modelBuilder.Entity("UserService.Domain.Models.UserLikedCvs", b =>
                 {
                     b.Property<Guid>("CvId")
                         .HasColumnType("uuid");
@@ -508,16 +486,16 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("UserLikedCvs", (string)null);
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", b =>
                 {
-                    b.HasBaseType("CvManagementSystem.Domain.Models.Attributes.AttributeDefinition");
+                    b.HasBaseType("UserService.Domain.Models.Attributes.AttributeDefinition");
 
                     b.ToTable("AttributeDefinitionsOfOneOfMany");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.BooleanAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.BooleanAttributeValue", b =>
                 {
-                    b.HasBaseType("CvManagementSystem.Domain.Models.Attributes.AttributeValue");
+                    b.HasBaseType("UserService.Domain.Models.Attributes.AttributeValue");
 
                     b.Property<bool>("Value")
                         .HasColumnType("boolean");
@@ -525,9 +503,9 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("BooleanAttributeValues");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.DateAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.DateAttributeValue", b =>
                 {
-                    b.HasBaseType("CvManagementSystem.Domain.Models.Attributes.AttributeValue");
+                    b.HasBaseType("UserService.Domain.Models.Attributes.AttributeValue");
 
                     b.Property<DateOnly>("Value")
                         .HasColumnType("date");
@@ -535,9 +513,9 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("DateAttributeValues");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.ImageAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.ImageAttributeValue", b =>
                 {
-                    b.HasBaseType("CvManagementSystem.Domain.Models.Attributes.AttributeValue");
+                    b.HasBaseType("UserService.Domain.Models.Attributes.AttributeValue");
 
                     b.Property<string>("Value")
                         .HasColumnType("text");
@@ -545,9 +523,9 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("ImageAttributeValues");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.MarkdownAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.MarkdownAttributeValue", b =>
                 {
-                    b.HasBaseType("CvManagementSystem.Domain.Models.Attributes.AttributeValue");
+                    b.HasBaseType("UserService.Domain.Models.Attributes.AttributeValue");
 
                     b.Property<string>("Value")
                         .IsRequired()
@@ -556,9 +534,9 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("MarkdownAttributeValues");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.NumericAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.NumericAttributeValue", b =>
                 {
-                    b.HasBaseType("CvManagementSystem.Domain.Models.Attributes.AttributeValue");
+                    b.HasBaseType("UserService.Domain.Models.Attributes.AttributeValue");
 
                     b.Property<float>("Value")
                         .HasColumnType("real");
@@ -566,9 +544,9 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("NumericAttributeValues");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.OneOfManyAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.OneOfManyAttributeValue", b =>
                 {
-                    b.HasBaseType("CvManagementSystem.Domain.Models.Attributes.AttributeValue");
+                    b.HasBaseType("UserService.Domain.Models.Attributes.AttributeValue");
 
                     b.Property<Guid>("OptionId")
                         .HasColumnType("uuid");
@@ -578,9 +556,9 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("OneOfManyAttributeValues");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.PeriodAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.PeriodAttributeValue", b =>
                 {
-                    b.HasBaseType("CvManagementSystem.Domain.Models.Attributes.AttributeValue");
+                    b.HasBaseType("UserService.Domain.Models.Attributes.AttributeValue");
 
                     b.Property<DateOnly>("EndValue")
                         .HasColumnType("date");
@@ -591,9 +569,9 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("PeriodAttributeValues");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.StringAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.StringAttributeValue", b =>
                 {
-                    b.HasBaseType("CvManagementSystem.Domain.Models.Attributes.AttributeValue");
+                    b.HasBaseType("UserService.Domain.Models.Attributes.AttributeValue");
 
                     b.Property<string>("Value")
                         .IsRequired()
@@ -602,15 +580,15 @@ namespace UserService.DataAccess.Migrations
                     b.ToTable("StringAttributeValues");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.DataAccess.Entitites.CvProject", b =>
+            modelBuilder.Entity("UserService.DataAccess.Entitites.CvProject", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Cv", "Cv")
+                    b.HasOne("UserService.Domain.Models.Cv", "Cv")
                         .WithMany()
                         .HasForeignKey("CvId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvManagementSystem.Domain.Models.Project", "Project")
+                    b.HasOne("UserService.Domain.Models.Project", "Project")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -621,15 +599,15 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.DataAccess.Entitites.PositionTechnology", b =>
+            modelBuilder.Entity("UserService.DataAccess.Entitites.PositionTechnology", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Position", "Position")
+                    b.HasOne("UserService.Domain.Models.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvManagementSystem.Domain.Models.Technology", "Technology")
+                    b.HasOne("UserService.Domain.Models.Technology", "Technology")
                         .WithMany()
                         .HasForeignKey("TechnologyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -640,15 +618,15 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("Technology");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.DataAccess.Entitites.ProjectTechnology", b =>
+            modelBuilder.Entity("UserService.DataAccess.Entitites.ProjectTechnology", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Project", "Project")
+                    b.HasOne("UserService.Domain.Models.Project", "Project")
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvManagementSystem.Domain.Models.Technology", "Technology")
+                    b.HasOne("UserService.Domain.Models.Technology", "Technology")
                         .WithMany()
                         .HasForeignKey("TechnologyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -659,15 +637,15 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("Technology");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.AccessRule", b =>
+            modelBuilder.Entity("UserService.Domain.Models.AccessRule", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", "AttributeValue")
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", "AttributeValue")
                         .WithMany()
                         .HasForeignKey("AttributeValueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvManagementSystem.Domain.Models.Position", null)
+                    b.HasOne("UserService.Domain.Models.Position", null)
                         .WithMany("AccessRules")
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -676,9 +654,9 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("AttributeValue");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.AttributeDefinition", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.AttributeDefinition", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeCategory", "AttributeCategory")
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeCategory", "AttributeCategory")
                         .WithMany()
                         .HasForeignKey("AttributeCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -687,9 +665,9 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("AttributeCategory");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.AttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.AttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeDefinition", "AttributeDefinition")
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeDefinition", "AttributeDefinition")
                         .WithMany()
                         .HasForeignKey("AttributeDefinitionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -698,24 +676,24 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("AttributeDefinition");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.OneOfManyOption", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.OneOfManyOption", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", null)
                         .WithMany("OneOfManyOptions")
                         .HasForeignKey("OneOfManyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Cv", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Cv", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Position", "Position")
+                    b.HasOne("UserService.Domain.Models.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvManagementSystem.Domain.Models.User", "User")
+                    b.HasOne("UserService.Domain.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -726,26 +704,26 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Discussion", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Discussion", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Position", "Position")
+                    b.HasOne("UserService.Domain.Models.Position", "Position")
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Discussion", "PositionId")
+                        .HasForeignKey("UserService.Domain.Models.Discussion", "PositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Position");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.DiscussionMessage", b =>
+            modelBuilder.Entity("UserService.Domain.Models.DiscussionMessage", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Discussion", null)
+                    b.HasOne("UserService.Domain.Models.Discussion", null)
                         .WithMany("Messages")
                         .HasForeignKey("DiscussionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvManagementSystem.Domain.Models.User", "User")
+                    b.HasOne("UserService.Domain.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.SetNull);
@@ -753,18 +731,18 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Project", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Project", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.User", null)
+                    b.HasOne("UserService.Domain.Models.User", null)
                         .WithMany("Projects")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Tokens.AccountConfirmationToken", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Tokens.AccountConfirmationToken", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.User", "User")
+                    b.HasOne("UserService.Domain.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -773,9 +751,9 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Tokens.RefreshToken", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Tokens.RefreshToken", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.User", "User")
+                    b.HasOne("UserService.Domain.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -784,14 +762,14 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.User", b =>
+            modelBuilder.Entity("UserService.Domain.Models.User", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Role", "Role")
+                    b.HasOne("UserService.Domain.Models.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.OwnsOne("CvManagementSystem.Domain.Models.ProfileData", "ProfileData", b1 =>
+                    b.OwnsOne("UserService.Domain.Models.ProfileData", "ProfileData", b1 =>
                         {
                             b1.Property<Guid>("UserId")
                                 .HasColumnType("uuid");
@@ -825,15 +803,15 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.UserAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.UserAttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", "AttributeValue")
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", "AttributeValue")
                         .WithMany()
                         .HasForeignKey("AttributeValueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvManagementSystem.Domain.Models.User", "User")
+                    b.HasOne("UserService.Domain.Models.User", "User")
                         .WithMany("Attributes")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -844,15 +822,15 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.UserLikedCvs", b =>
+            modelBuilder.Entity("UserService.Domain.Models.UserLikedCvs", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Cv", "Cv")
+                    b.HasOne("UserService.Domain.Models.Cv", "Cv")
                         .WithMany()
                         .HasForeignKey("CvId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvManagementSystem.Domain.Models.User", "User")
+                    b.HasOne("UserService.Domain.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -863,69 +841,69 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeDefinition", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeDefinition", null)
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", "Id")
+                        .HasForeignKey("UserService.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.BooleanAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.BooleanAttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", null)
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Attributes.BooleanAttributeValue", "Id")
+                        .HasForeignKey("UserService.Domain.Models.Attributes.BooleanAttributeValue", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.DateAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.DateAttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", null)
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Attributes.DateAttributeValue", "Id")
+                        .HasForeignKey("UserService.Domain.Models.Attributes.DateAttributeValue", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.ImageAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.ImageAttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", null)
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Attributes.ImageAttributeValue", "Id")
+                        .HasForeignKey("UserService.Domain.Models.Attributes.ImageAttributeValue", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.MarkdownAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.MarkdownAttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", null)
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Attributes.MarkdownAttributeValue", "Id")
+                        .HasForeignKey("UserService.Domain.Models.Attributes.MarkdownAttributeValue", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.NumericAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.NumericAttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", null)
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Attributes.NumericAttributeValue", "Id")
+                        .HasForeignKey("UserService.Domain.Models.Attributes.NumericAttributeValue", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.OneOfManyAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.OneOfManyAttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", null)
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Attributes.OneOfManyAttributeValue", "Id")
+                        .HasForeignKey("UserService.Domain.Models.Attributes.OneOfManyAttributeValue", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.OneOfManyOption", "Option")
+                    b.HasOne("UserService.Domain.Models.Attributes.OneOfManyOption", "Option")
                         .WithMany()
                         .HasForeignKey("OptionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -934,42 +912,42 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("Option");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.PeriodAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.PeriodAttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", null)
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Attributes.PeriodAttributeValue", "Id")
+                        .HasForeignKey("UserService.Domain.Models.Attributes.PeriodAttributeValue", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.StringAttributeValue", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.StringAttributeValue", b =>
                 {
-                    b.HasOne("CvManagementSystem.Domain.Models.Attributes.AttributeValue", null)
+                    b.HasOne("UserService.Domain.Models.Attributes.AttributeValue", null)
                         .WithOne()
-                        .HasForeignKey("CvManagementSystem.Domain.Models.Attributes.StringAttributeValue", "Id")
+                        .HasForeignKey("UserService.Domain.Models.Attributes.StringAttributeValue", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Discussion", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Discussion", b =>
                 {
                     b.Navigation("Messages");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Position", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Position", b =>
                 {
                     b.Navigation("AccessRules");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.User", b =>
+            modelBuilder.Entity("UserService.Domain.Models.User", b =>
                 {
                     b.Navigation("Attributes");
 
                     b.Navigation("Projects");
                 });
 
-            modelBuilder.Entity("CvManagementSystem.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", b =>
+            modelBuilder.Entity("UserService.Domain.Models.Attributes.AttributeDefinitionOfOneOfMany", b =>
                 {
                     b.Navigation("OneOfManyOptions");
                 });

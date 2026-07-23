@@ -601,17 +601,6 @@ namespace UserService.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "AttributeCategories",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { new Guid("00676f84-8715-4515-b05f-e5ee5985b56b"), "AttributeCategory4" },
-                    { new Guid("14bf7b07-87d4-406a-9ae8-0e1003b5d416"), "AttributeCategory3" },
-                    { new Guid("79421e86-2141-4505-8272-53219ba4035a"), "AttributeCategory2" },
-                    { new Guid("c83d7576-9fc9-444c-81ed-f8417106f306"), "AttributeCategory1" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
