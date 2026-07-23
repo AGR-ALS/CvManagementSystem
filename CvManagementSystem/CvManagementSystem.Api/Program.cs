@@ -41,7 +41,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsDockerEnvironment())
     app.UseSwaggerUI();
 }
 
-if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+if (app.Environment.IsDockerEnvironment() || app.Environment.IsProduction())
 {
     using var scope = app.Services.CreateScope();
     var dbContext = scope.ServiceProvider.GetRequiredService<UserServiceDbContext>();
