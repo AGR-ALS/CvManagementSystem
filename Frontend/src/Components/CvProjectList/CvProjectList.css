@@ -1,0 +1,40 @@
+.cv-project-list__container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.cv-project-list__card {
+    padding: 16px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.cv-project-list__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cv-project-list__text {
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    overflow-wrap: anywhere;
+}
+
+.cv-project-list__tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-top: 12px;
+
+    gap: 8px;
+}
+
+.cv-project-list__add-btn {
+    width: fit-content;
+}

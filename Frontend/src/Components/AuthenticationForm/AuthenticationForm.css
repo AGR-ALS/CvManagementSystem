@@ -1,0 +1,11 @@
+.auth-form__outer {
+    height: 95vh;
+}
+
+.auth-form__card {
+    width: 400px;
+}
+
+.auth-form__toggle {
+    cursor: pointer;
+}

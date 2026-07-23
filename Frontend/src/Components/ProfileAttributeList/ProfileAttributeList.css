@@ -1,0 +1,17 @@
+.profile-attr-list__wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile-attr-list__toolbar {
+    position: sticky;
+    top: 50%;
+
+    margin-right: 8px;
+
+    transform: translateY(10vh);
+}
+
+.profile-attr-list__content {
+    flex: 1;
+}

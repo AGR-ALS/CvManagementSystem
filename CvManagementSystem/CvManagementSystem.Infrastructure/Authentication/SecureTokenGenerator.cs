@@ -1,0 +1,18 @@
+﻿using System.Security.Cryptography;
+using UserService.Application.Abstractions.Authentication;
+using UserService.Domain.Models.Tokens;
+
+namespace CvManagementSystem.Infrastructure.Authentication;
+
+public class SecureTokenGenerator : ISecureTokenGenerator
+{
+    public string GenerateToken()
+    {
+        return Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+    }
+
+    public bool VerifyToken(SecureToken token)
+    {
+        return token.ExpiresAt >= DateTime.UtcNow;
+    }
+}

@@ -1,0 +1,12 @@
+.project-edit-modal__footer {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.project-edit-modal__actions {
+    display: flex;
+
+    gap: 8px;
+}

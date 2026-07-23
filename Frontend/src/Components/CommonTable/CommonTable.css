@@ -1,0 +1,8 @@
+.common-table__inner {
+    margin-top: 20px;
+    width: 80%;
+}
+
+.common-table__row--clickable {
+    cursor: pointer;
+}

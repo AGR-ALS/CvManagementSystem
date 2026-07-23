@@ -1,0 +1,36 @@
+.position-form__outer {
+    min-height: 95vh;
+    padding-top: 20px;
+}
+
+.position-form__field {
+    margin-bottom: 16px;
+}
+
+.position-form__field-text {
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    overflow-wrap: anywhere;
+}
+
+.position-form__flex-row {
+    display: flex;
+
+    gap: 16px;
+}
+
+.position-form__flex-col {
+    flex: 0 0 20%;
+}
+
+.position-form__flex-grow {
+    flex: 1;
+}
+
+.position-form__actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 12px;
+}

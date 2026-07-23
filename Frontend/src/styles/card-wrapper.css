@@ -1,0 +1,15 @@
+.card-wrapper {
+    padding: 24px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.card-wrapper--60 {
+    width: 60%;
+}
+
+.card-wrapper--80 {
+    width: 80%;
+}

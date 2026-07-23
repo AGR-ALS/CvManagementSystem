@@ -1,0 +1,12 @@
+.account-confirm-page__wrapper {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 10vh;
+}
+
+.account-confirm-page__card {
+    width: 400px;
+
+    text-align: center;
+}

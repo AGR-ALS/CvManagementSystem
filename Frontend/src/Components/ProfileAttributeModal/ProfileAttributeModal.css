@@ -1,0 +1,9 @@
+.profile-attr-modal__markdown {
+    word-break: break-word;
+}
+
+.profile-attr-modal__image {
+    max-width: 100%;
+
+    border-radius: 8px;
+}

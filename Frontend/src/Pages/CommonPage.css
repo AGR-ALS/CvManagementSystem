@@ -1,0 +1,16 @@
+.common-page__wrapper {
+    display: flex;
+
+    min-height: 95vh;
+}
+
+.common-page__toolbar {
+    position: fixed;
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+.common-page__content {
+    flex: 1;
+}

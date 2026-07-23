@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AWSSDK.S3" Version="4.0.100" />
+      <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
+      <PackageReference Include="MassTransit.RabbitMQ" Version="8.5.10" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SharedResources.MessageContracts\SharedResources.MessageContracts.csproj" />
+      <ProjectReference Include="..\CvManagementSystem.Application\CvManagementSystem.Application.csproj" />
+      <ProjectReference Include="..\CvManagementSystem.Domain\CvManagementSystem.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

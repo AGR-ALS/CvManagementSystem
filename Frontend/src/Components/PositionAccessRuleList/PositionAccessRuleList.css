@@ -1,0 +1,17 @@
+.position-access-rule-list__wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.position-access-rule-list__toolbar {
+    position: sticky;
+    top: 50%;
+
+    margin-right: 8px;
+
+    transform: translateY(10vh);
+}
+
+.position-access-rule-list__content {
+    flex: 1;
+}

@@ -1,0 +1,86 @@
+services:
+  minio:
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z-cpuv1
+    container_name: minio_separate
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio-data:/data
+
+  cv-management-system:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:8080
+    container_name: cv-management-system
+    image: cv-management-system:1.0.0
+    build:
+      context: ./UserService
+      dockerfile: Dockerfile
+    env_file:
+      - ./UserService/.env
+    ports:
+      - "5176:8080"
+    depends_on:
+      - postgres-db
+      - rabbitmq
+
+  mailservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:8080
+    container_name: mailservice
+    image: mailservice:1.0.0
+    build:
+      context: ./MailService
+      dockerfile: Dockerfile
+    env_file:
+      - ./MailService/.env
+    ports:
+      - "5027:8080"
+    depends_on:
+      - rabbitmq
+
+  postgres-db:
+    container_name: postgres-db
+    image: postgres:18.1-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - users-db-data:/var/lib/postgresql
+    ports:
+      - "5454:5432"
+  
+  rabbitmq:
+    image: rabbitmq:4.3-management-alpine
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    ports:
+      - "5672:5672"       
+      - "15672:15672"   
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - cv-management-system
+
+volumes:
+  users-db-data:
+  rabbitmq-data:
+  minio-data:
+

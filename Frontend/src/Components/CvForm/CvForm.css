@@ -1,0 +1,29 @@
+.cv-form__outer {
+    min-height: 95vh;
+    padding-top: 20px;
+}
+
+.cv-form__like {
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.cv-form__field {
+    margin-bottom: 12px;
+}
+
+.cv-form__button-row {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 24px;
+}
+
+.cv-form__button-row--view {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 24px;
+}

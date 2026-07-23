@@ -1,0 +1,22 @@
+.project-list__container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.project-list__card {
+    cursor: default;
+}
+
+.project-list__card--clickable {
+    cursor: pointer;
+}
+
+.project-list__tags {
+    margin-top: 8px;
+}
+
+.project-list__add-btn {
+    width: fit-content;
+}

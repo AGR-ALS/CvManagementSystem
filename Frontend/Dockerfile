@@ -1,0 +1,26 @@
+﻿FROM node:20-alpine AS build
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+
+ARG REACT_APP_API_URL
+ARG REACT_APP_ADMIN_ROLE
+ARG REACT_APP_RECRUITER_ROLE
+ARG REACT_APP_REGULAR_ROLE
+
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+ENV REACT_APP_ADMIN_ROLE=$REACT_APP_ADMIN_ROLE
+ENV REACT_APP_RECRUITER_ROLE=$REACT_APP_RECRUITER_ROLE
+ENV REACT_APP_REGULAR_ROLE=$REACT_APP_REGULAR_ROLE
+
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
