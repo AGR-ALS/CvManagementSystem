@@ -34,3 +34,11 @@ docker compose up --build -d
 ```
 
 ### You can access the app at [localhost:3000](http://localhost:3000)
+
+## Premade Admin
+
+You can access premade admin user using credentials:
+```
+email: admin@admin.com
+password: admin
+```
