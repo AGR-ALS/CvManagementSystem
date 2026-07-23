@@ -7,21 +7,21 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Docker
 WORKDIR /src
-COPY ["UserService.Api/UserService.Api.csproj", "UserService.Api/"]
-COPY ["UserService.DataAccess/UserService.DataAccess.csproj", "UserService.DataAccess/"]
-COPY ["UserService.Application/UserService.Application.csproj", "UserService.Application/"]
-COPY ["UserService.Domain/UserService.Domain.csproj", "UserService.Domain/"]
-COPY ["UserService.Infrastructure/UserService.Infrastructure.csproj", "UserService.Infrastructure/"]
-RUN dotnet restore "UserService.Api/UserService.Api.csproj"
+COPY ["CvManagementSystem.Api/CvManagementSystem.Api.csproj", "CvManagementSystem.Api/"]
+COPY ["CvManagementSystem.DataAccess/CvManagementSystem.DataAccess.csproj", "CvManagementSystem.DataAccess/"]
+COPY ["CvManagementSystem.Application/CvManagementSystem.Application.csproj", "CvManagementSystem.Application/"]
+COPY ["CvManagementSystem.Domain/CvManagementSystem.Domain.csproj", "CvManagementSystem.Domain/"]
+COPY ["CvManagementSystem.Infrastructure/CvManagementSystem.Infrastructure.csproj", "CvManagementSystem.Infrastructure/"]
+RUN dotnet restore "CvManagementSystem.Api/CvManagementSystem.Api.csproj"
 COPY . .
-WORKDIR "/src/UserService.Api"
-RUN dotnet build "UserService.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/CvManagementSystem.Api"
+RUN dotnet build "CvManagementSystem.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Docker
-RUN dotnet publish "UserService.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "CvManagementSystem.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "UserService.Api.dll"]
+ENTRYPOINT ["dotnet", "CvManagementSystem.Api.dll"]
