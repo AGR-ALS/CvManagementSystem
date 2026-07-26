@@ -12,11 +12,11 @@ namespace UserService.DataAccess.Repositories;
 
 public class PositionsRepository : IPositionsRepository
 {
-    private readonly UserServiceDbContext _dbContext;
+    private readonly CvManagementDbContext _dbContext;
     private readonly IDiscussionRepository _discussionRepository;
     private readonly IOptionsRepository _optionsRepository;
 
-    public PositionsRepository(UserServiceDbContext dbContext, IDiscussionRepository discussionRepository, IOptionsRepository optionsRepository)
+    public PositionsRepository(CvManagementDbContext dbContext, IDiscussionRepository discussionRepository, IOptionsRepository optionsRepository)
     {
         _dbContext = dbContext;
         _discussionRepository = discussionRepository;

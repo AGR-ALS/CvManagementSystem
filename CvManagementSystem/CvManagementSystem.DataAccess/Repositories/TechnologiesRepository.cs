@@ -8,9 +8,9 @@ namespace UserService.DataAccess.Repositories;
 
 public class TechnologiesRepository : ITechnologiesRepository
 {
-    private readonly UserServiceDbContext _dbContext;
+    private readonly CvManagementDbContext _dbContext;
 
-    public TechnologiesRepository(UserServiceDbContext dbContext)
+    public TechnologiesRepository(CvManagementDbContext dbContext)
     {
         _dbContext = dbContext;
     }

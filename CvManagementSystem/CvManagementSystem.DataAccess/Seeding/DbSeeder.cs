@@ -21,7 +21,7 @@ public static class DbSeeder
         Guid.Parse("00676f84-8715-4515-b05f-e5ee5985b56b")
     ];
 
-    public static async Task SeedAsync(UserServiceDbContext context)
+    public static async Task SeedAsync(CvManagementDbContext context)
     {
         if (await context.Users.AnyAsync()) return;
 
@@ -45,7 +45,7 @@ public static class DbSeeder
         await context.SaveChangesAsync();
     }
 
-    private static User SeedAdminUser(UserServiceDbContext context)
+    private static User SeedAdminUser(CvManagementDbContext context)
     {
         var admin = new User
         {
@@ -68,7 +68,7 @@ public static class DbSeeder
         return admin;
     }
 
-    private static List<AttributeCategory> SeedAttributeCategories(UserServiceDbContext context)
+    private static List<AttributeCategory> SeedAttributeCategories(CvManagementDbContext context)
     {
         var categories = new List<AttributeCategory>
         {
@@ -83,7 +83,7 @@ public static class DbSeeder
         return categories;
     }
 
-    private static List<Technology> SeedTechnologies(UserServiceDbContext context)
+    private static List<Technology> SeedTechnologies(CvManagementDbContext context)
     {
         var techNames = new[]
         {
@@ -99,7 +99,7 @@ public static class DbSeeder
         return technologies;
     }
 
-    private static List<Position> SeedPositions(UserServiceDbContext context, List<Technology> technologies)
+    private static List<Position> SeedPositions(CvManagementDbContext context, List<Technology> technologies)
     {
         var faker = new Faker();
         var positions = new List<Position>();
@@ -147,7 +147,7 @@ public static class DbSeeder
         return positions;
     }
 
-    private static List<AttributeDefinition> SeedAttributeDefinitions(UserServiceDbContext context)
+    private static List<AttributeDefinition> SeedAttributeDefinitions(CvManagementDbContext context)
     {
         var phoneDef = new AttributeDefinition
         {
@@ -237,7 +237,7 @@ public static class DbSeeder
         return definitions;
     }
 
-    private static List<User> SeedRegularUsers(UserServiceDbContext context)
+    private static List<User> SeedRegularUsers(CvManagementDbContext context)
     {
         var faker = new Faker();
 
@@ -270,7 +270,7 @@ public static class DbSeeder
         return users;
     }
 
-    private static List<User> SeedRecruiterUsers(UserServiceDbContext context)
+    private static List<User> SeedRecruiterUsers(CvManagementDbContext context)
     {
         var faker = new Faker();
 
@@ -303,7 +303,7 @@ public static class DbSeeder
         return users;
     }
 
-    private static List<Project> SeedProjects(UserServiceDbContext context, List<User> users, List<Technology> technologies)
+    private static List<Project> SeedProjects(CvManagementDbContext context, List<User> users, List<Technology> technologies)
     {
         var faker = new Faker();
         var projects = new List<Project>();
@@ -345,7 +345,7 @@ public static class DbSeeder
         return projects;
     }
 
-    private static List<AttributeValue> SeedAttributeValues(UserServiceDbContext context, List<AttributeDefinition> definitions)
+    private static List<AttributeValue> SeedAttributeValues(CvManagementDbContext context, List<AttributeDefinition> definitions)
     {
         var faker = new Faker();
         var attributeValues = new List<AttributeValue>();
@@ -439,7 +439,7 @@ public static class DbSeeder
         return attributeValues;
     }
 
-    private static void SeedUserAttributeValues(UserServiceDbContext context, List<User> users, List<AttributeValue> attributeValues)
+    private static void SeedUserAttributeValues(CvManagementDbContext context, List<User> users, List<AttributeValue> attributeValues)
     {
         var faker = new Faker();
         var userAttributeValues = new List<UserAttributeValue>();
@@ -460,7 +460,7 @@ public static class DbSeeder
         context.UserAttributeValues.AddRange(userAttributeValues);
     }
 
-    private static void SeedCvs(UserServiceDbContext context, List<User> users, List<Position> positions, List<Project> projects)
+    private static void SeedCvs(CvManagementDbContext context, List<User> users, List<Position> positions, List<Project> projects)
     {
         var faker = new Faker();
         var cvs = new List<Cv>();
@@ -500,7 +500,7 @@ public static class DbSeeder
         context.CvProjects.AddRange(cvProjects);
     }
 
-    private static void SeedDiscussions(UserServiceDbContext context, List<Position> positions, List<User> users)
+    private static void SeedDiscussions(CvManagementDbContext context, List<Position> positions, List<User> users)
     {
         var faker = new Faker();
         var discussions = new List<Discussion>();
@@ -537,7 +537,7 @@ public static class DbSeeder
         context.DiscussionMessages.AddRange(messages);
     }
 
-    private static void SeedAccessRules(UserServiceDbContext context, List<Position> positions, List<AttributeValue> attributeValues)
+    private static void SeedAccessRules(CvManagementDbContext context, List<Position> positions, List<AttributeValue> attributeValues)
     {
         var faker = new Faker();
         var accessRules = new List<AccessRule>();

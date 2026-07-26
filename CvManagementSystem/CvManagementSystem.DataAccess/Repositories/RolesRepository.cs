@@ -7,9 +7,9 @@ namespace UserService.DataAccess.Repositories;
 
 public class RolesRepository : IRolesRepository
 {
-    private readonly UserServiceDbContext _dbContext;
+    private readonly CvManagementDbContext _dbContext;
 
-    public RolesRepository(UserServiceDbContext dbContext)
+    public RolesRepository(CvManagementDbContext dbContext)
     {
         _dbContext = dbContext;
     }

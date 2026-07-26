@@ -10,7 +10,7 @@ using UserService.DataAccess.Context;
 
 namespace UserService.DataAccess.Migrations
 {
-    [DbContext(typeof(UserServiceDbContext))]
+    [DbContext(typeof(CvManagementDbContext))]
     partial class UserServiceDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

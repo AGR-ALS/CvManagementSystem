@@ -7,9 +7,9 @@ namespace UserService.DataAccess.Repositories;
 
 public class DiscussionRepository : IDiscussionRepository
 {
-    private readonly UserServiceDbContext _dbContext;
+    private readonly CvManagementDbContext _dbContext;
 
-    public DiscussionRepository(UserServiceDbContext dbContext)
+    public DiscussionRepository(CvManagementDbContext dbContext)
     {
         _dbContext = dbContext;
     }

@@ -12,10 +12,10 @@ namespace UserService.DataAccess.Repositories;
 
 public class UsersRepository : IUsersRepository
 {
-    private readonly UserServiceDbContext _dbDbContext;
+    private readonly CvManagementDbContext _dbDbContext;
     private readonly RolesSettings _rolesSettings;
 
-    public UsersRepository(UserServiceDbContext dbDbContext, IOptions<RolesSettings> rolesSettings)
+    public UsersRepository(CvManagementDbContext dbDbContext, IOptions<RolesSettings> rolesSettings)
     {
         _dbDbContext = dbDbContext;
         _rolesSettings = rolesSettings.Value;

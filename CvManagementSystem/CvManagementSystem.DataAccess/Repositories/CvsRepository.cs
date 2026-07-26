@@ -11,10 +11,10 @@ namespace UserService.DataAccess.Repositories;
 
 public class CvsRepository : ICvsRepository
 {
-    private readonly UserServiceDbContext _dbContext;
+    private readonly CvManagementDbContext _dbContext;
     private readonly IOptionsRepository _optionsRepository;
 
-    public CvsRepository(UserServiceDbContext dbContext, IOptionsRepository optionsRepository)
+    public CvsRepository(CvManagementDbContext dbContext, IOptionsRepository optionsRepository)
     {
         _dbContext = dbContext;
         _optionsRepository = optionsRepository;

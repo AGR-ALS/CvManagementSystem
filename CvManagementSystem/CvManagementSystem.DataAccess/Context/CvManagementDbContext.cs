@@ -10,13 +10,13 @@ using UserService.Domain.Models.Tokens;
 
 namespace UserService.DataAccess.Context;
 
-public class UserServiceDbContext : DbContext
+public class CvManagementDbContext : DbContext
 {
     private readonly IConfiguration _configuration;
     private readonly RolesSettings _rolesSettings;
 
-    public UserServiceDbContext(IConfiguration configuration, IOptions<RolesSettings> rolesSettings,
-        DbContextOptions<UserServiceDbContext> options) : base(options)
+    public CvManagementDbContext(IConfiguration configuration, IOptions<RolesSettings> rolesSettings,
+        DbContextOptions<CvManagementDbContext> options) : base(options)
     {
         _configuration = configuration;
         _rolesSettings = rolesSettings.Value;
@@ -31,7 +31,7 @@ public class UserServiceDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(
-            typeof(UserServiceDbContext).Assembly,
+            typeof(CvManagementDbContext).Assembly,
             type => type != typeof(UserConfiguration) && type != typeof(RolesConfiguration)
         );
         modelBuilder.ApplyConfiguration(new UserConfiguration(_rolesSettings));

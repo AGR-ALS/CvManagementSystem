@@ -7,9 +7,9 @@ namespace UserService.DataAccess.Repositories;
 
 public class AttributeCategoriesRepository : IAttributeCategoriesRepository
 {
-    private readonly UserServiceDbContext _dbContext;
+    private readonly CvManagementDbContext _dbContext;
 
-    public AttributeCategoriesRepository(UserServiceDbContext dbContext)
+    public AttributeCategoriesRepository(CvManagementDbContext dbContext)
     {
         _dbContext = dbContext;
     }

@@ -9,10 +9,10 @@ namespace UserService.DataAccess.Repositories;
 
 public class AttributeValuesRepository<T> : IAttributeValuesRepository<T> where T : AttributeValue
 {
-    private readonly UserServiceDbContext _dbContext;
+    private readonly CvManagementDbContext _dbContext;
     private readonly IOptionsRepository _optionsRepository;
 
-    public AttributeValuesRepository(UserServiceDbContext dbContext, IOptionsRepository optionsRepository)
+    public AttributeValuesRepository(CvManagementDbContext dbContext, IOptionsRepository optionsRepository)
     {
         _dbContext = dbContext;
         _optionsRepository = optionsRepository;

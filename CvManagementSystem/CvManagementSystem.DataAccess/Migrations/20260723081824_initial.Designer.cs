@@ -11,7 +11,7 @@ using UserService.DataAccess.Context;
 
 namespace UserService.DataAccess.Migrations
 {
-    [DbContext(typeof(UserServiceDbContext))]
+    [DbContext(typeof(CvManagementDbContext))]
     [Migration("20260723081824_initial")]
     partial class initial
     {

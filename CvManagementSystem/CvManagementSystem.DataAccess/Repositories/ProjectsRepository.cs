@@ -10,9 +10,9 @@ namespace UserService.DataAccess.Repositories;
 
 public class ProjectsRepository : IProjectsRepository
 {
-    private readonly UserServiceDbContext _dbContext;
+    private readonly CvManagementDbContext _dbContext;
 
-    public ProjectsRepository(UserServiceDbContext dbContext)
+    public ProjectsRepository(CvManagementDbContext dbContext)
     {
         _dbContext = dbContext;
     }

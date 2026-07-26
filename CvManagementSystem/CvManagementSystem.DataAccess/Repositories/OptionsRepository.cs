@@ -7,9 +7,9 @@ namespace UserService.DataAccess.Repositories;
 
 public class OptionsRepository : IOptionsRepository
 {
-    private readonly UserServiceDbContext _dbContext;
+    private readonly CvManagementDbContext _dbContext;
 
-    public OptionsRepository(UserServiceDbContext dbContext)
+    public OptionsRepository(CvManagementDbContext dbContext)
     {
         _dbContext = dbContext;
     }

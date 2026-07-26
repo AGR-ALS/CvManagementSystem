@@ -16,7 +16,7 @@ using UserService.DataAccess.Seeding;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<UserServiceDbContext>();
+builder.Services.AddDbContext<CvManagementDbContext>();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
@@ -44,7 +44,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsDockerEnvironment())
 if (app.Environment.IsDockerEnvironment() || app.Environment.IsProduction())
 {
     using var scope = app.Services.CreateScope();
-    var dbContext = scope.ServiceProvider.GetRequiredService<UserServiceDbContext>();
+    var dbContext = scope.ServiceProvider.GetRequiredService<CvManagementDbContext>();
     dbContext.Database.Migrate();
     await DbSeeder.SeedAsync(dbContext);
 }

@@ -7,9 +7,9 @@ namespace UserService.DataAccess.Repositories;
 
 public class AccountConfirmationTokensRepository : IAccountConfirmationTokensRepository
 {
-    private readonly UserServiceDbContext _dbDbContext;
+    private readonly CvManagementDbContext _dbDbContext;
 
-    public AccountConfirmationTokensRepository(UserServiceDbContext dbDbContext)
+    public AccountConfirmationTokensRepository(CvManagementDbContext dbDbContext)
     {
         _dbDbContext = dbDbContext;
     }

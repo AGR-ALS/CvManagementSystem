@@ -7,9 +7,9 @@ namespace UserService.DataAccess.Repositories;
 
 public class RefreshTokensRepository : IRefreshTokensRepository
 {
-    private readonly UserServiceDbContext _dbDbContext;
+    private readonly CvManagementDbContext _dbDbContext;
 
-    public RefreshTokensRepository(UserServiceDbContext dbDbContext)
+    public RefreshTokensRepository(CvManagementDbContext dbDbContext)
     {
         _dbDbContext = dbDbContext;
     }
