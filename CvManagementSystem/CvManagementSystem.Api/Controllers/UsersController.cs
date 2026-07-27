@@ -347,34 +347,6 @@ public class UsersController : ControllerBase
         HttpContext.Response.Cookies.Delete(tokenName);
     }
 
-    private GetUserResponse MapUserData(User user, List<GetAttributeValueResponse> attributeValues,
-        List<GetAllCvsResponse> cvsResponse)
-    {
-        var userResponse = _mapper.Map<GetUserResponse>(user);
-        userResponse.AttributeValues = attributeValues;
-        userResponse.Cvs = cvsResponse;
-
-        return userResponse;
-    }
-
-    private async Task<List<GetAllCvsResponse>> LoadCvsForUser(CancellationToken cancellationToken, User user)
-    {
-        var cvs = await _cvsService.GetAllCvsForUserAsync(user.Id, cancellationToken);
-        var cvsResponse = _mapper.Map<List<GetAllCvsResponse>>(cvs);
-
-        return cvsResponse;
-    }
-
-    private async Task<List<GetAttributeValueResponse>> LoadAttributeValuesForUser(CancellationToken cancellationToken,
-        User user)
-    {
-        var attributeValueIds = user.Attributes.Select(x => x.AttributeValueId).ToArray();
-        var attributes = await _attributesService.GetAttributeValuesByIdsAsync(attributeValueIds, cancellationToken);
-        var attributeValues = _mapper.Map<List<GetAttributeValueResponse>>(attributes);
-
-        return attributeValues;
-    }
-
     private async Task ValidateUploadAsync(UploadPhotoRequest request, CancellationToken cancellationToken)
     {
         var validationResult = await _photoValidator.ValidateAsync(request, cancellationToken);
