@@ -69,30 +69,6 @@ public class CvsRepository : ICvsRepository
         return await _dbContext.Cvs.AsNoTracking().FirstOrDefaultAsync(c=>c.UserId == userId && c.PositionId == positionId, cancellationToken);
     }
     
-    public async Task<Cv?> GetCvByIdFullAsync(Guid id, CancellationToken cancellationToken = default)
-    {
-        var cv = await _dbContext.Cvs
-            .Include(u=>u.User)
-            .ThenInclude(x=>x.Attributes)
-            .ThenInclude(x=>x.AttributeValue)
-            .ThenInclude(x=>x.AttributeDefinition)
-            .Include(x=>x.User)
-            .ThenInclude(x=>x.Projects)
-            .ThenInclude(x=>x.Technologies)
-            .Include(x=>x.Position)
-            .ThenInclude(x=>x.AccessRules)
-            .ThenInclude(x=>x.AttributeValue)
-            .ThenInclude(x=>x.AttributeDefinition)
-            .Include(x=>x.Projects)
-            .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
-        if (cv != null)
-        {
-            await _optionsRepository.LoadOptionsAsync(cv.Position.AccessRules.Select(x=>x.AttributeValue).Select(x=>x.AttributeDefinition).ToList(), cancellationToken);
-        }
-        
-        return cv;
-    }
-
     public async Task<Cv?> GetCvByIdBasicAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Cvs.AsNoTracking().FirstOrDefaultAsync(c=>c.Id == id, cancellationToken);

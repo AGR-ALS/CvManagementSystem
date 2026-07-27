@@ -25,15 +25,7 @@ public class CvsService : ICvsService
     {
         return await _cvRepository.GetAllCvsForUserAsync(userId, cancellationToken);
     }
-
-    public async Task<Cv> GetCvFullByIdAsync(Guid userId, Guid positionId, CancellationToken cancellationToken = default)
-    {
-        var cv = await _cvRepository.GetCvByIdFullAsync(userId, positionId, cancellationToken);
-        CheckIfCvIsFound(cv);
-        
-        return cv!;
-    }
-
+    
     public async Task<Cv> GetCvBasicByIdAsync(Guid userId, Guid positionId, CancellationToken cancellationToken = default)
     {
         var cv = await _cvRepository.GetCvByIdBasicAsync(userId, positionId, cancellationToken);
@@ -42,14 +34,6 @@ public class CvsService : ICvsService
         return cv!;
     }
     
-    public async Task<Cv> GetCvFullByIdAsync(Guid id, CancellationToken cancellationToken = default)
-    {
-        var cv = await _cvRepository.GetCvByIdFullAsync(id, cancellationToken);
-        CheckIfCvIsFound(cv);
-        
-        return cv!;
-    }
-
     public async Task<Cv> GetCvBasicByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         var cv = await _cvRepository.GetCvByIdBasicAsync(id, cancellationToken);

@@ -6,9 +6,7 @@ public interface ICvsService
 {
     Task<List<Cv>> GetAllPublishedCvsAsync(CancellationToken cancellationToken = default);
     Task<List<Cv>> GetAllCvsForUserAsync(Guid userId, CancellationToken cancellationToken = default);
-    Task<Cv> GetCvFullByIdAsync(Guid userId, Guid positionId, CancellationToken cancellationToken = default);
     Task<Cv> GetCvBasicByIdAsync(Guid userId, Guid positionId, CancellationToken cancellationToken = default);
-    Task<Cv> GetCvFullByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task<Cv> GetCvBasicByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task<int> GetCvsAmount(CancellationToken cancellationToken = default);
     Task<Cv> ResolveCvAsync(Cv cv, CancellationToken cancellationToken = default);
