@@ -8,8 +8,6 @@ public static class MessageBrokerExtension
 {
     public static void AddRabbitMqViaMassTransit(this IServiceCollection services, IConfiguration configuration)
     {
-        services.Configure<RabbitMqSettings>(configuration.GetSection(nameof(RabbitMqSettings)));
-    
         services.AddMassTransit(busConfigurator =>
         {
             busConfigurator.SetKebabCaseEndpointNameFormatter();
