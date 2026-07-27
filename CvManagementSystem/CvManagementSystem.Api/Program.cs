@@ -48,7 +48,6 @@ if (app.Environment.IsDockerEnvironment() || app.Environment.IsProduction())
     dbContext.Database.Migrate();
     await DbSeeder.SeedAsync(dbContext);
 }
-Console.WriteLine(app.Environment.EnvironmentName);
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseCors(corsPolicyName);
