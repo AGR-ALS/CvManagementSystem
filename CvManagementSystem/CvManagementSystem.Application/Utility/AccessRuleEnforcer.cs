@@ -86,7 +86,6 @@ public class AccessRuleEnforcer : IAccessRuleEnforcer
 
     private bool CheckMarkdownAttributeValue(MarkdownAttributeValue valueFromRule, MarkdownAttributeValue valueFromUser, FilterOperator filterOperator)
     {
-        // Markdown обрабатывается как текст (Text type)
         bool correspond = filterOperator switch
         {
             FilterOperator.Contains => valueFromUser.Value.Contains(valueFromRule.Value, StringComparison.OrdinalIgnoreCase),
