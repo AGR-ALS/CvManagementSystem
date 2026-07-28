@@ -38,6 +38,7 @@ export function useCvPage() {
     const [selectorOpen, setSelectorOpen] = useState(false);
     const [editingRow, setEditingRow] = useState<CvAttributeRow | null>(null);
     const [attributeOpen, setAttributeOpen] = useState(false);
+
     useEffect(() => {
         const load = async () => {
             if (!userId || !positionId) {
@@ -70,10 +71,7 @@ export function useCvPage() {
         };
         load();
     }, [userId, positionId, navigate, auth.userId, auth.role]);
-    const matching = useMemo(() => !cv ? [] : cv.user.projects.filter(p => p.technologies.some(t => cv.position.technologies.some(x => x.name === t.name))), [cv]);
-    useEffect(() => {
-        if (cv) setProjects(cv.projects.length ? cv.projects : matching.slice(0, cv.position.maxProjects));
-    }, [cv, matching]);
+
     const save = async () => {
         if (!cv) return;
         try {
