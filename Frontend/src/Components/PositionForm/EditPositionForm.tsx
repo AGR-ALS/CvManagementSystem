@@ -58,7 +58,7 @@ export default function EditPositionForm({position, isCreating, onSave, onCancel
             form.resetFields();
             setRules([])
         }
-    }, [position, form]);
+    }, [position]);
     const saveRule = (data: { filterOperator: FilterOperator; attributeValue: AttributeValue }) => {
         setRules(x => current ? x.map(r => r.id === current.id ? {
             ...r,
@@ -72,6 +72,7 @@ export default function EditPositionForm({position, isCreating, onSave, onCancel
         setOpen(false);
         setCurrent(null)
     };
+
     return <div className="d-flex justify-content-center position-form__outer">
         <div className="card-wrapper card-wrapper--80">
             <Form form={form} layout="vertical" onFinish={(v: any) => onSave({

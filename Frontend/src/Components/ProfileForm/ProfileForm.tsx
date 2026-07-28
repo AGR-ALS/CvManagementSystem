@@ -51,7 +51,7 @@ export default function ProfileForm({
                 ]);
             }
         }
-    }, [user, form]);
+    }, [user]);
 
     return (
         <div className="d-flex justify-content-center profile-form__outer">

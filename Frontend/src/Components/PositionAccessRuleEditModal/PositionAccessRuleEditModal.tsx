@@ -84,7 +84,7 @@ export default function PositionAccessRuleEditModal({open, onClose, onSave, init
                 setSelectedDefinition(null);
             }
         }
-    }, [open, initialRule, form]);
+    }, [open, initialRule]);
 
     const handleDefinitionChange = (id: string) => {
         const def = definitions.find(d => d.id === id) || null;

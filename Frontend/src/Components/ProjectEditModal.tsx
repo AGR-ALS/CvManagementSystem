@@ -48,7 +48,7 @@ export default function ProjectEditModal({
                 });
             }
         }
-    }, [open, project, form, isCreating]);
+    }, [open, project, isCreating]);
 
     const handleOk = async () => {
         const values = await form.validateFields();

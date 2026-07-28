@@ -58,7 +58,7 @@ export default function ProfileAttributeEditModal({
                 form.setFieldsValue({value: prepareInitialValue(initialValue)});
             }
         }
-    }, [open, form, externalDefinition, initialValue]);
+    }, [open, externalDefinition, initialValue]);
 
     const handleDefinitionChange = (id: string) => {
         const def = definitions.find(d => d.id === id) || null;
