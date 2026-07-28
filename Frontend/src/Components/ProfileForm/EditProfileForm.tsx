@@ -19,7 +19,7 @@ interface Props {
     onOpenCv: (cvId: string) => void;
 }
 
-export default function ProfileForm({
+export default function EditProfileForm({
                                         user,
                                         roles,
                                         canEditRole,

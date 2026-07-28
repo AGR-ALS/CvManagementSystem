@@ -1,4 +1,4 @@
-﻿import ProfileForm from "../Components/ProfileForm/ProfileForm";
+﻿import EditProfileForm from "../Components/ProfileForm/EditProfileForm";
 import ViewProfileForm from "../Components/ProfileForm/ViewProfileForm";
 import React, {useState} from "react";
 import {UserProfile} from "../models/UserProfile";
@@ -95,7 +95,7 @@ export default function ProfilePage() {
                             onOpenCv={handleOpenCv}
                         />
                     ) : (
-                        <ProfileForm
+                        <EditProfileForm
                             user={page.user}
                             roles={page.roles}
                             canEditRole={canEditRole}
