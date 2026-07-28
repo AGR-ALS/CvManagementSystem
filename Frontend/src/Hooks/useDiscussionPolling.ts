@@ -35,7 +35,7 @@ export function useDiscussionPolling(
         }, intervalMs);
 
         return () => clearInterval(interval);
-    }, [positionId, activeTab, intervalMs, t, setDiscussion]);
+    }, [positionId, activeTab]);
 
     return {discussion, loading, authorNames, onSend};
 }
