@@ -1,7 +1,7 @@
 ﻿import {Button, Form, Input, Modal, Select} from "antd";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
-import {Project} from "../models/Project";
+import {Project} from "../../models/Project";
 import "./ProjectEditModal.css";
 
 interface Props {

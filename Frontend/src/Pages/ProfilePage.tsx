@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import {UserProfile} from "../models/UserProfile";
 import {useNavigate, useSearchParams} from "react-router";
 import {useAutoSave} from "../Hooks/useAutoSave";
-import ProjectEditModal from "../Components/ProjectEditModal";
+import ProjectEditModal from "../Components/ProjectEditModal/ProjectEditModal";
 import {ProjectContext} from "../Contexts/ProjectContext";
 import ProfileAttributeEditModal from "../Components/ProfileAttributeEditModal/ProfileAttributeEditModal";
 import AttributeValueModal from "../Components/ProfileAttributeModal/ProfileAttributeModal";
