@@ -39,6 +39,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsDockerEnvironment())
     app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
+    await app.EnsureS3BucketExistsAsync();
 }
 
 if (app.Environment.IsDockerEnvironment() || app.Environment.IsProduction())
