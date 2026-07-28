@@ -25,7 +25,7 @@ export default function AllCvsPage() {
         };
 
         loadCvs();
-    }, [t]);
+    }, []);
 
     const handleRowClick = (cv: CvBasicModel) => {
         const userId = cv.userId ?? "";
