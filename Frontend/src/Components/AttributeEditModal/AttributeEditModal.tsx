@@ -3,7 +3,8 @@ import {Button, Form, Input, Modal, Select} from "antd";
 import {useTranslation} from "react-i18next";
 import {AttributeDataType} from "../../models/AttributeDataType";
 import {AttributeCategory} from "../../models/AttributeCategory";
-import {AttributeDefinition, OneOfManyOption} from "../../models/AttributeDefinition";
+import {AttributeDefinition} from "../../models/AttributeDefinition";
+import {OneOfManyOption} from "../../models/OneOfManyOption";
 
 interface Props {
     open: boolean;
