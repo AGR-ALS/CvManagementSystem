@@ -7,8 +7,8 @@ interface Props {
 }
 
 export default function DiscussionList({messages, authorNames}: Props) {
-    const sortedMessages = [...messages].sort((a, b) => new Date(a.sentAt).getTime() - new Date(b.sentAt).getTime());
-    return <div className="d-flex flex-column gap-3">{sortedMessages.map(msg => <DiscussionMessageItem key={msg.id}
-                                                                                                       message={msg}
-                                                                                                       authorName={authorNames[msg.userId]}/>)}</div>;
+    return
+    (<div className="d-flex flex-column gap-3">
+        {messages.map(msg => <DiscussionMessageItem key={msg.id} message={msg} authorName={authorNames[msg.userId]}/>)}
+    </div>);
 }

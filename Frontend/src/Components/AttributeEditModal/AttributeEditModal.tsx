@@ -33,7 +33,7 @@ export default function AttributeEditModal({open, attribute, categories, onCance
                 setTags(attribute.oneOfManyOptions?.map(o => o.value) ?? []);
             }
         }
-    }, [open, attribute, form]);
+    }, [open, attribute]);
 
     const handleOk = async () => {
         const values = await form.validateFields();
