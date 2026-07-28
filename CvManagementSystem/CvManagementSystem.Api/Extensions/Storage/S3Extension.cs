@@ -8,7 +8,6 @@ public static class S3Extension
 {
     public static void AddS3Storage(this IServiceCollection services, IConfiguration configuration)
     {
-        services.Configure<S3StorageSettings>(configuration.GetSection(nameof(S3StorageSettings)));
         services.AddSingleton<IAmazonS3>(storageProvider =>
         {
             var s3StorageSettings = storageProvider.GetRequiredService<IOptions<S3StorageSettings>>().Value;

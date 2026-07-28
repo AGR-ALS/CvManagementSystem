@@ -26,5 +26,6 @@ public static class OptionsConfiguringExtension
         services.Configure<RabbitMqSettings>(configuration.GetSection(nameof(RabbitMqSettings)));
         services.Configure<AccountConfirmationTokenSettings>(configuration.GetSection(nameof(AccountConfirmationTokenSettings)));
         services.Configure<AccountConfirmationSettings>(configuration.GetSection(nameof(AccountConfirmationSettings)));
+        services.Configure<S3StorageSettings>(configuration.GetSection(nameof(S3StorageSettings)));
     }
 }
