@@ -40,7 +40,6 @@ export default function AuthenticationForm({initialMode, onSubmit}: Props) {
                     onFinish={onFinish}
                     autoComplete="off"
                 >
-                    {/* 2. Поле Email с валидацией */}
                     <Form.Item<FieldType>
                         label={t("auth.email")}
                         name="email"
