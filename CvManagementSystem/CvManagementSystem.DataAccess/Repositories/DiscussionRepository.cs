@@ -16,7 +16,7 @@ public class DiscussionRepository : IDiscussionRepository
     
     public async Task<Discussion?> GetDiscussionByPositionIdAsync(Guid positionId, CancellationToken cancellationToken = default)
     {
-        return await _dbContext.Discussions.AsNoTracking().Include(x=>x.Messages).FirstOrDefaultAsync(x=>x.PositionId == positionId, cancellationToken);
+        return await _dbContext.Discussions.AsNoTracking().Include(x=>x.Messages.OrderBy(m=>m.SentAt)).FirstOrDefaultAsync(x=>x.PositionId == positionId, cancellationToken);
     }
 
     public async Task AddMessageToDiscussionAsync(DiscussionMessage message, CancellationToken cancellationToken = default)
