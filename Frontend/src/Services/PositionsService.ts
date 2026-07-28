@@ -1,6 +1,6 @@
 ﻿import {apiRequest} from "./apiClient";
 import {Position} from "../models/Position";
-import {CreateUpdatePositionRequest} from "../models/PositionDto";
+import {CreateUpdatePositionRequest} from "../models/CreateUpdatePositionRequest";
 
 const baseUrl = "/positions";
 

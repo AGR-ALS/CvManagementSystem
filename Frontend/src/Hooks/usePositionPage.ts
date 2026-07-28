@@ -3,7 +3,7 @@ import {message} from "antd";
 import {useTranslation} from "react-i18next";
 import {useNavigate, useSearchParams} from "react-router";
 import {Position} from "../models/Position";
-import {CreateUpdatePositionRequest} from "../models/PositionDto";
+import {CreateUpdatePositionRequest} from "../models/CreateUpdatePositionRequest";
 import {AttributeDefinition} from "../models/AttributeDefinition";
 import {CreatePosition, GetPosition, UpdatePosition} from "../Services/PositionsService";
 import {SearchTechnologies} from "../Services/TechnologiesService";

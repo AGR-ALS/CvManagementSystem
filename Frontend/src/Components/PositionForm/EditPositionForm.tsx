@@ -6,7 +6,7 @@ import {AccessRule} from "../../models/AccessRule";
 import {AttributeValue} from "../../models/AttributeValue";
 import {FilterOperator} from "../../models/FilterOperator";
 import {AttributeDataType} from "../../models/AttributeDataType";
-import {CreateUpdatePositionRequest} from "../../models/PositionDto";
+import {CreateUpdatePositionRequest} from "../../models/CreateUpdatePositionRequest";
 import PositionAccessRuleList from "../PositionAccessRuleList/PositionAccessRuleList";
 import PositionAccessRuleEditModal from "../PositionAccessRuleEditModal/PositionAccessRuleEditModal";
 import {usePositionFormContext} from "../../Contexts/PositionFormContext";
