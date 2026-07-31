@@ -7,7 +7,7 @@ namespace UserService.Api.Extensions.Storage;
 
 public static class S3Extension
 {
-    public static void AddS3Storage(this IServiceCollection services, IConfiguration configuration)
+    public static void AddS3Storage(this IServiceCollection services)
     {
         services.AddSingleton<IAmazonS3>(storageProvider =>
         {

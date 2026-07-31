@@ -25,7 +25,7 @@ builder.Services.AddAuthorizationWithDefaultRoles(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDiServices();
 builder.Services.ConfigureOptions(builder.Configuration);
-builder.Services.AddS3Storage(builder.Configuration);
+builder.Services.AddS3Storage();
 builder.Services.AddRabbitMqViaMassTransit(builder.Configuration);
 builder.Services.AddAutoMapper(cfg => { }, typeof(UserProfile));
 var corsPolicyName = builder.Services.AddCorsPolicy(builder.Configuration);
