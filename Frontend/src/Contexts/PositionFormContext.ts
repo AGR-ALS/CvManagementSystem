@@ -6,6 +6,7 @@ export interface PositionFormContextType {
     onSearchTechnologies: (query: string) => Promise<void>;
     attributeDefinitions: AttributeDefinition[];
     onGenerateCv: () => Promise<void>;
+    onGenerateApiToken: (positionId: string) => Promise<string>;
 }
 
 export const PositionFormContext = createContext<PositionFormContextType | undefined>(undefined);

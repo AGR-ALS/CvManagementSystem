@@ -18,6 +18,7 @@ import AccountConfirmPage from "../../Pages/AccountConfirmPage";
 import {setCurrentPath, setNavigate} from "../../Services/apiClient";
 import {isAdmin, isRecruiter, isRegular} from "../../utils/roles";
 import {useAuth} from "../../Contexts/AuthContext";
+import {SupportTicketProvider} from "../../Contexts/SupportTicketContext";
 
 export default function AppShell() {
     const navigate = useNavigate();
@@ -77,7 +78,7 @@ export default function AppShell() {
     }, [auth.isLoading, auth.isLoggedIn, auth.role, handleLogout, t]);
 
     return (
-        <>
+        <SupportTicketProvider>
             <header className="app-shell__header">
                 <NavBar links={links}/>
             </header>
@@ -99,6 +100,6 @@ export default function AppShell() {
                 </Routes>
                 </Suspense>
             </main>
-        </>
+        </SupportTicketProvider>
     );
 }

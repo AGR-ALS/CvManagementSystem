@@ -38,10 +38,13 @@ export default function ViewProfileForm({user, canEdit, canSeeRole, onEdit, onOp
                                 {renderField(t("profile.lastName"), user.profileData?.lastName)}
                             </div>
                             <div className="col-md-6">
-                                {renderField(t("profile.location"), user.profileData?.location)}
+                                {renderField(t("profile.email"), user.email)}
                             </div>
                             <div className="col-md-6">
-                                {renderField(t("profile.email"), user.email)}
+                                {renderField(t("profile.phoneNumber"), user.profileData?.phoneNumber)}
+                            </div>
+                            <div className="col-md-12">
+                                {renderField(t("profile.location"), user.profileData?.location)}
                             </div>
                         </div>
                         {canSeeRole && renderField(t("profile.role"), user.role?.name)}

@@ -68,6 +68,7 @@
         "firstName": "Имя",
         "lastName": "Фамилия",
         "location": "Местоположение",
+        "phoneNumber": "Номер телефона",
         "email": "Email",
         "role": "Роль",
         "roleRequired": "Пожалуйста, выберите роль!",
@@ -93,7 +94,21 @@
         "positionData": "Данные позиции",
         "discussion": "Обсуждение",
         "generateCv": "Сгенерировать резюме",
+        "generateApiToken": "Сгенерировать API токен",
+        "askQuestion": "Задать вопрос",
         "clone": "Клонировать"
+    },
+    "supportTicket": {
+        "title": "Нужна помощь?",
+        "priorityLabel": "Оцените приоритет вашего вопроса",
+        "priorityRequired": "Пожалуйста, выберите приоритет!",
+        "priorityPlaceholder": "Выберите приоритет",
+        "priorityLow": "Низкий",
+        "priorityMedium": "Средний",
+        "priorityHigh": "Высокий",
+        "summaryLabel": "Опишите вашу проблему",
+        "summaryRequired": "Пожалуйста, опишите вашу проблему!",
+        "send": "Отправить"
     },
     "positionList": {
         "title": "Название",
@@ -113,6 +128,7 @@
         "firstName": "Имя",
         "lastName": "Фамилия",
         "location": "Местоположение",
+        "phoneNumber": "Номер телефона",
         "role": "Роль",
         "email": "Email",
         "profileAlt": "Профиль",
@@ -249,8 +265,13 @@
         "likeToggleError": "Не удалось изменить лайк.",
         "techSearchError": "Не удалось выполнить поиск технологий.",
         "cvGenerateError": "Не удалось сгенерировать резюме.",
+        "positionTokenGenerateError": "Не удалось сгенерировать API токен.",
+        "supportTicketSent": "Заявка успешно отправлена.",
+        "supportTicketSendError": "Не удалось отправить заявку.",
         "discussionLoadError": "Не удалось загрузить обсуждение.",
-        "discussionSendError": "Не удалось отправить сообщение."
+        "discussionSendError": "Не удалось отправить сообщение.",
+        "salesforceLinked": "Аккаунт успешно привязан к Salesforce.",
+        "salesforceLinkError": "Не удалось привязать аккаунт к Salesforce."
     },
     "profileAttributeEdit": {
         "value": "Значение",
@@ -301,5 +322,18 @@
     },
     "positionForm": {
         "cancel": "Отмена"
+    },
+    "salesforce": {
+        "linkButton": "Привязать Salesforce",
+        "title": "Регистрация в Salesforce",
+        "accountName": "Название организации",
+        "accountNameRequired": "Пожалуйста, введите название организации!",
+        "accountPhoneNumber": "Телефон организации",
+        "accountPhoneNumberRequired": "Пожалуйста, введите телефон организации!",
+        "accountWebsite": "Вебсайт организации",
+        "accountWebsiteRequired": "Пожалуйста, введите вебсайт организации!",
+        "contactTitle": "Ваша позиция в организации",
+        "contactTitleRequired": "Пожалуйста, введите вашу позицию в организации!",
+        "submit": "Отправить"
     }
 }

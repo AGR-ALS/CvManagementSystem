@@ -9,6 +9,7 @@ import {CreatePosition, GetPosition, UpdatePosition} from "../Services/Positions
 import {SearchTechnologies} from "../Services/TechnologiesService";
 import {GetAttributeDefinitions} from "../Services/AttributeService";
 import {ResolveCv} from "../Services/CvService";
+import {GetPositionApiToken} from "../Services/OdooService";
 import {isRegular} from "../utils/roles";
 import {useAuth} from "../Contexts/AuthContext";
 
@@ -74,10 +75,17 @@ export function usePositionPage() {
 
     const onSave = async (request: CreateUpdatePositionRequest, positionId?: string) => {
         try {
-            if (mode === "create" || mode === "clone") await CreatePosition(request);
-            else if (mode === "edit" && positionId) await UpdatePosition(positionId, request);
-            message.success(t("messages.positionSaved"));
-            navigate(mode === "edit" && positionId ? `/position?id=${positionId}&mode=view` : "/positions");
+            if (mode === "create" || mode === "clone") {
+                await CreatePosition(request);
+                message.success(t("messages.positionSaved"));
+                navigate("/positions");
+            } else if (mode === "edit" && positionId) {
+                await UpdatePosition(positionId, request);
+                const updated = await GetPosition(positionId);
+                setPosition(updated);
+                message.success(t("messages.positionSaved"));
+                navigate(`/position?id=${positionId}&mode=view`);
+            }
         } catch {
             message.error(t("messages.positionSaveError"));
         }
@@ -95,6 +103,15 @@ export function usePositionPage() {
         }
     };
 
+    const onGenerateApiToken = async (positionId: string): Promise<string> => {
+        try {
+            return await GetPositionApiToken(positionId);
+        } catch {
+            message.error(t("messages.positionTokenGenerateError"));
+            throw new Error("Token generation failed");
+        }
+    };
+
     return {
         idParam,
         position,
@@ -106,6 +123,7 @@ export function usePositionPage() {
         onSearchTechnologies,
         onSave,
         onGenerateCv,
+        onGenerateApiToken,
         onClone: () => idParam && navigate(`/position?id=${idParam}&mode=clone`),
         onCancel: () => navigate("/positions"),
         onEdit: () => idParam && navigate(`/position?id=${idParam}&mode=edit`)

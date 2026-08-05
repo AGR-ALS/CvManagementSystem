@@ -33,6 +33,7 @@ export default function PositionPage() {
                 onSearchTechnologies: page.onSearchTechnologies,
                 attributeDefinitions: page.attributeDefinitions,
                 onGenerateCv: page.onGenerateCv,
+                onGenerateApiToken: page.onGenerateApiToken,
             }}>
                 {activeTab === "data" ? (
                     page.mode === "view" ?

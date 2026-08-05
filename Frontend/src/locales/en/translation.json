@@ -68,6 +68,7 @@
         "firstName": "First Name",
         "lastName": "Last Name",
         "location": "Location",
+        "phoneNumber": "Phone Number",
         "email": "Email",
         "role": "Role",
         "roleRequired": "Please select role!",
@@ -93,7 +94,21 @@
         "positionData": "Position Data",
         "discussion": "Discussion",
         "generateCv": "Generate CV",
+        "generateApiToken": "Generate Api Token",
+        "askQuestion": "Ask Question",
         "clone": "Clone"
+    },
+    "supportTicket": {
+        "title": "Need help?",
+        "priorityLabel": "Rate priority of your question",
+        "priorityRequired": "Please select priority!",
+        "priorityPlaceholder": "Select priority",
+        "priorityLow": "Low",
+        "priorityMedium": "Medium",
+        "priorityHigh": "High",
+        "summaryLabel": "Describe your problem",
+        "summaryRequired": "Please describe your problem!",
+        "send": "Send"
     },
     "positionList": {
         "title": "Title",
@@ -113,6 +128,7 @@
         "firstName": "First Name",
         "lastName": "Last Name",
         "location": "Location",
+        "phoneNumber": "Phone Number",
         "role": "Role",
         "email": "Email",
         "profileAlt": "Profile",
@@ -249,8 +265,13 @@
         "likeToggleError": "Failed to toggle like.",
         "techSearchError": "Unable to search technologies.",
         "cvGenerateError": "Unable to generate CV.",
+        "positionTokenGenerateError": "Unable to generate API token.",
+        "supportTicketSent": "Support ticket sent successfully.",
+        "supportTicketSendError": "Failed to send support ticket.",
         "discussionLoadError": "Unable to load discussion.",
-        "discussionSendError": "Unable to send message."
+        "discussionSendError": "Unable to send message.",
+        "salesforceLinked": "Account successfully linked to Salesforce.",
+        "salesforceLinkError": "Failed to link account to Salesforce."
     },
     "profileAttributeEdit": {
         "value": "Value",
@@ -301,5 +322,18 @@
     },
     "positionForm": {
         "cancel": "Cancel"
+    },
+    "salesforce": {
+        "linkButton": "Link Salesforce",
+        "title": "Salesforce registration",
+        "accountName": "Organization Name",
+        "accountNameRequired": "Please enter organization name!",
+        "accountPhoneNumber": "Organization Phone",
+        "accountPhoneNumberRequired": "Please enter organization phone!",
+        "accountWebsite": "Organization Website",
+        "accountWebsiteRequired": "Please enter organization website!",
+        "contactTitle": "Your position in the organization",
+        "contactTitleRequired": "Please enter your position in the organization!",
+        "submit": "Submit"
     }
 }

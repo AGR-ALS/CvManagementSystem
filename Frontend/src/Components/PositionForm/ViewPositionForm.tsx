@@ -1,8 +1,10 @@
+import {useState} from "react";
 import {Button, Divider, Typography} from "antd";
 import {useTranslation} from "react-i18next";
 import {Position} from "../../models/Position";
 import PositionAccessRuleList from "../PositionAccessRuleList/PositionAccessRuleList";
 import {usePositionFormContext} from "../../Contexts/PositionFormContext";
+import {useSupportTicketContext} from "../../Contexts/SupportTicketContext";
 import {ExpertiseLevel} from "../../models/ExpertiseLevel";
 import "../../styles/card-wrapper.css";
 import "./PositionForm.css";
@@ -15,7 +17,20 @@ interface Props {
 
 export default function ViewPositionForm({position, canEdit = false, onEdit}: Props) {
     const {t} = useTranslation();
-    const {onGenerateCv} = usePositionFormContext();
+    const {onGenerateCv, onGenerateApiToken} = usePositionFormContext();
+    const {openSupportTicket} = useSupportTicketContext();
+    const [apiToken, setApiToken] = useState<string | null>(null);
+    const [tokenLoading, setTokenLoading] = useState(false);
+
+    const handleGenerateToken = async () => {
+        if (!position) return;
+        setTokenLoading(true);
+        try {
+            setApiToken(await onGenerateApiToken(position.id));
+        } finally {
+            setTokenLoading(false);
+        }
+    };
 
     const field = (label: string, value?: string | number | null, multiline = false) => (
         <div className="position-form__field">
@@ -48,9 +63,29 @@ export default function ViewPositionForm({position, canEdit = false, onEdit}: Pr
                                         handleDelete={() => {}}
                                         readOnly/>
                 <Divider/>
-                <div className="position-form__actions">
-                    {position && <Button onClick={onGenerateCv}>{t("position.generateCv")}</Button>}
-                    {canEdit && onEdit && <Button type="primary" onClick={onEdit}>{t("app.edit")}</Button>}
+                <div className="position-form__footer">
+                    <div className="position-form__token-group">
+                        {position && (apiToken ? (
+                            <Typography.Paragraph
+                                className="position-form__token-text"
+                                copyable={{text: apiToken}}
+                            >
+                                {apiToken}
+                            </Typography.Paragraph>
+                        ) : (
+                            <Button
+                                loading={tokenLoading}
+                                onClick={handleGenerateToken}
+                            >
+                                {t("position.generateApiToken")}
+                            </Button>
+                        ))}
+                        {position && <Button onClick={() => openSupportTicket(position.id)}>{t("position.askQuestion")}</Button>}
+                    </div>
+                    <div className="position-form__actions">
+                        {position && <Button onClick={onGenerateCv}>{t("position.generateCv")}</Button>}
+                        {canEdit && onEdit && <Button type="primary" onClick={onEdit}>{t("app.edit")}</Button>}
+                    </div>
                 </div>
             </div>
         </div>

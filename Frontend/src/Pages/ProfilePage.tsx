@@ -14,6 +14,8 @@ import {Spin} from "antd";
 import {useProfilePage} from "../Hooks/useProfilePage";
 import {useProfileProjects} from "../Hooks/useProfileProjects";
 import {useProfileAttributes} from "../Hooks/useProfileAttributes";
+import {useSalesforce} from "../Hooks/useSalesforce";
+import SalesforceModal from "../Components/SalesforceModal/SalesforceModal";
 
 export default function ProfilePage() {
     const [changedUser, setChangedUser] = useState<UserProfile | null>(null);
@@ -45,6 +47,8 @@ export default function ProfilePage() {
 
     const canEditProfile = isAdmin(page.currentUserRole) || (!!page.currentUserId && page.currentUserId === page.user.id);
     const canEditRole = isAdmin(page.currentUserRole);
+    const canLinkSalesforce = canEditProfile;
+    const salesforce = useSalesforce(page.user.id, canLinkSalesforce && !page.isViewMode, page.user);
 
     useAutoSave(
         page.isViewMode ? null : changedUser,
@@ -99,6 +103,8 @@ export default function ProfilePage() {
                             user={page.user}
                             roles={page.roles}
                             canEditRole={canEditRole}
+                            showSalesforceButton={canLinkSalesforce && salesforce.registered === false}
+                            onLinkSalesforce={salesforce.openModal}
                             handleSave={page.handleSaveProfile}
                             onChange={setChangedUser}
                             handleUploadImage={page.handleUploadImage}
@@ -129,6 +135,12 @@ export default function ProfilePage() {
                                            onClose={attributes.closeCreate}
                                            onSave={attributes.onCreate}/>
             )}
+            <SalesforceModal
+                open={salesforce.open}
+                submitting={salesforce.submitting}
+                onCancel={salesforce.close}
+                onSubmit={salesforce.submit}
+            />
         </div>
     );
 }

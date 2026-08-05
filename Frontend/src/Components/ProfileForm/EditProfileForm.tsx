@@ -13,6 +13,8 @@ interface Props {
     user: UserProfile;
     roles: UserRole[];
     canEditRole: boolean;
+    showSalesforceButton?: boolean;
+    onLinkSalesforce?: () => void;
     onChange: (user: UserProfile) => void;
     handleSave: (user: UserProfile, redirect: boolean) => Promise<void>;
     handleUploadImage: (id: string, file: File) => Promise<void>;
@@ -23,6 +25,8 @@ export default function EditProfileForm({
                                         user,
                                         roles,
                                         canEditRole,
+                                        showSalesforceButton,
+                                        onLinkSalesforce,
                                         handleSave,
                                         onChange,
                                         handleUploadImage,
@@ -104,18 +108,26 @@ export default function EditProfileForm({
                                 </div>
                                 <div className="col-md-6">
                                     <Form.Item
-                                        label={t("profile.location")}
-                                        name={["profileData", "location"]}
-                                    >
-                                        <Input placeholder={t("profile.location")}/>
-                                    </Form.Item>
-                                </div>
-                                <div className="col-md-6">
-                                    <Form.Item
                                         label={t("profile.email")}
                                         name="email"
                                     >
                                         <Input placeholder={t("profile.email")}/>
+                                    </Form.Item>
+                                </div>
+                                <div className="col-md-6">
+                                    <Form.Item
+                                        label={t("profile.phoneNumber")}
+                                        name={["profileData", "phoneNumber"]}
+                                    >
+                                        <Input placeholder={t("profile.phoneNumber")}/>
+                                    </Form.Item>
+                                </div>
+                                <div className="col-md-12">
+                                    <Form.Item
+                                        label={t("profile.location")}
+                                        name={["profileData", "location"]}
+                                    >
+                                        <Input placeholder={t("profile.location")}/>
                                     </Form.Item>
                                 </div>
                             </div>
@@ -209,7 +221,15 @@ export default function EditProfileForm({
 
                     <Divider className="my-4"/>
 
-                    <div className="d-flex justify-content-end">
+                    <div className="d-flex justify-content-end align-items-center">
+                        {showSalesforceButton && onLinkSalesforce && (
+                            <Button
+                                onClick={onLinkSalesforce}
+                                className="me-auto"
+                            >
+                                {t("salesforce.linkButton")}
+                            </Button>
+                        )}
                         <Button
                             type="primary"
                             htmlType="submit"

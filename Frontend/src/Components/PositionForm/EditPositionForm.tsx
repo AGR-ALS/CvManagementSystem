@@ -32,9 +32,9 @@ const dto = (value: any, id: string, type: AttributeDataType): any => {
     if (type === AttributeDataType.Numeric) x.numericValue = value;
     if (type === AttributeDataType.Date) x.dateValue = value?.format ? value.format("YYYY-MM-DD") : value;
     if (type === AttributeDataType.Boolean) x.booleanValue = value;
-    if (type === AttributeDataType.Period && Array.isArray(value)) {
-        x.periodStartValue = value[0]?.format("YYYY-MM-DD");
-        x.periodEndValue = value[1]?.format("YYYY-MM-DD");
+    if (type === AttributeDataType.Period && value && typeof value === 'object' && 'start' in value) {
+        x.periodStartValue = (value as any).start ?? null;
+        x.periodEndValue = (value as any).end ?? null;
     }
     return x;
 };

@@ -29,9 +29,9 @@ export default function EditCvForm() {
                         <Typography.Title level={5}>{t("cv.userInformation")}</Typography.Title>
                         {field(t("cv.firstName"), cv.user.profileData?.firstName)}
                         {field(t("cv.lastName"), cv.user.profileData?.lastName)}
-                        {field(t("cv.location"), cv.user.profileData?.location)}
-                        {field(t("cv.role"), cv.user.role?.name)}
                         {field(t("cv.email"), cv.user.email)}
+                        {field(t("cv.phoneNumber"), cv.user.profileData?.phoneNumber)}
+                        {field(t("cv.location"), cv.user.profileData?.location)}
                     </div>
                     {ctx.photo && (
                         <div className="col-md-4 d-flex justify-content-center align-items-center">

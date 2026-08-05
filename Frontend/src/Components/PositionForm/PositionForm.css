@@ -34,3 +34,26 @@
 
     gap: 12px;
 }
+
+.position-form__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.position-form__token-group {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.position-form__token-text {
+    margin-bottom: 0;
+    word-break: break-all;
+    padding: 8px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+}
