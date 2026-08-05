@@ -19,9 +19,13 @@ using CvManagementSystem.Infrastructure.Authentication.AccountConfirmation;
 using CvManagementSystem.Infrastructure.Authentication.Jwt;
 using CvManagementSystem.Infrastructure.Authentication.RefreshTokens;
 using CvManagementSystem.Infrastructure.Files;
+using CvManagementSystem.Infrastructure.Integrations;
+using CvManagementSystem.Infrastructure.Integrations.Services;
 using CvManagementSystem.Infrastructure.Mail;
 using CvManagementSystem.Infrastructure.Mail.Abstractions;
 using CvManagementSystem.Infrastructure.MessageEvents.Publishers;
+using UserService.Application.Abstractions.Integrations;
+using UserService.Application.Abstractions.Integrations.Services;
 
 namespace UserService.Api.Extensions.Services;
 
@@ -63,5 +67,12 @@ public static class DiServicesExtension
         services.AddScoped<IMailEventPublisher, MailEventPublisher>();
         services.AddScoped<IEmailBuilder, EmailBuilder>();
         services.AddScoped<ILinkBuilder, EmailBuilder>();
+        services.AddScoped<ISalesforceService, SalesforceService>();
+        services.AddScoped<ISalesforceRecordsRepository, SalesforceRecordsRepository>();
+        services.AddScoped<IPositionApiTokensRepository, PositionApiTokensRepository>();
+        services.AddScoped<IPositionApiTokensService, PositionApiTokensService>();
+        services.AddScoped<ISupportTicketService, SupportTicketService>();
+        services.AddScoped<IPositionImportRepository, PositionsRepository>();
+        services.AddScoped<IOdooService, OdooService>();
     }
 }

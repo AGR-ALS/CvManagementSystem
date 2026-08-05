@@ -23,7 +23,10 @@ public static class DbSeeder
 
     public static async Task SeedAsync(CvManagementDbContext context)
     {
-        if (await context.Users.AnyAsync()) return;
+        if (await context.Users.AnyAsync())
+        {
+            return;
+        }
 
         Randomizer.Seed = new Random(9001);
 
@@ -60,7 +63,8 @@ public static class DbSeeder
             {
                 FirstName = "Admin",
                 LastName = "Admin",
-                Location = "Minsk"
+                Location = "Minsk",
+                PhoneNumber = (new Faker()).Phone.PhoneNumber(),
             }
         };
         context.Users.Add(admin);
@@ -259,7 +263,8 @@ public static class DbSeeder
                 {
                     FirstName = firstName,
                     LastName = lastName,
-                    Location = faker.Address.City()
+                    Location = faker.Address.City(),
+                    PhoneNumber = faker.Phone.PhoneNumber(),
                 }
             };
             users.Add(user);
@@ -292,7 +297,8 @@ public static class DbSeeder
                 {
                     FirstName = firstName,
                     LastName = lastName,
-                    Location = faker.Address.City()
+                    Location = faker.Address.City(),
+                    PhoneNumber = faker.Phone.PhoneNumber(),
                 }
             };
             users.Add(user);
@@ -515,7 +521,10 @@ public static class DbSeeder
             };
             discussions.Add(discussion);
 
-            if (!faker.Random.Bool(0.7f)) continue;
+            if (!faker.Random.Bool(0.7f))
+            {
+                continue;
+            }
 
             var messageCount = faker.Random.Int(2, 3);
             var sentAt = DateTime.UtcNow.AddDays(-30);

@@ -29,6 +29,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             pd.Property(x => x.FirstName).IsRequired(false).HasMaxLength(50);
             pd.Property(x => x.LastName).IsRequired(false).HasMaxLength(50);
             pd.Property(x => x.Location).IsRequired(false).HasMaxLength(50);
+            pd.Property(x => x.PhoneNumber).IsRequired(false).HasMaxLength(25);
             pd.Property(x => x.PersonalPhoto).IsRequired(false);
         });
         builder.Property(x => x.Email).IsRequired();

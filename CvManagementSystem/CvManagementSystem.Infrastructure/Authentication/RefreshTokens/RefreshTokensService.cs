@@ -38,11 +38,7 @@ public class RefreshTokensService : IRefreshTokensService
 
     public async Task<bool> ValidateSecureTokenAsync(string token, CancellationToken cancellationToken)
     {
-        var tokenEntity = await _refreshTokensRepository.GetSecureTokenAsync(token, cancellationToken);
-        if (tokenEntity == null)
-        {
-            throw new EntityNotFoundException("Token entity was not found");
-        }
+        var tokenEntity = await GetSecureTokenModelAsync(token, cancellationToken);
 
         return _secureTokenGenerator.VerifyToken(tokenEntity);
     }

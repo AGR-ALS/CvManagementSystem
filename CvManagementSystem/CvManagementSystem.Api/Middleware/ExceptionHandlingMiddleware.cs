@@ -44,7 +44,7 @@ public class ExceptionHandlingMiddleware
             EntityCreatingException => StatusCodes.Status422UnprocessableEntity,
             EntityUpdatingException => StatusCodes.Status422UnprocessableEntity,
             ValidationException => StatusCodes.Status400BadRequest,
-            DBConcurrencyException => StatusCodes.Status400BadRequest,
+            DBConcurrencyException => StatusCodes.Status409Conflict,
             _ => StatusCodes.Status500InternalServerError,
         };
             

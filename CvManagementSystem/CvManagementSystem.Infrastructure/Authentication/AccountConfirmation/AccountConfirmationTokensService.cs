@@ -38,11 +38,7 @@ public class AccountConfirmationTokensService : IAccountConfirmationTokensServic
 
     public async Task<bool> ValidateSecureTokenAsync(string token, CancellationToken cancellationToken)
     {
-        var tokenEntity = await _accountConfirmationTokensRepository.GetSecureTokenAsync(token, cancellationToken);
-        if (tokenEntity == null)
-        {
-            throw new EntityNotFoundException("Token entity was not found");
-        }
+        var tokenEntity = await GetSecureTokenModelAsync(token, cancellationToken);
 
         return _secureTokenGenerator.VerifyToken(tokenEntity);
     }

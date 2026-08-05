@@ -69,4 +69,6 @@ public class CvManagementDbContext : DbContext
     public DbSet<Role> Roles { get; set; }
     public DbSet<OneOfManyOption> OneOfManyOptions { get; set; }
     public DbSet<UserLikedCvs> UserLikedCvs { get; set; }
+    public DbSet<PositionApiToken> PositionApiTokens { get; set; }
+    public DbSet<SalesforceRecord> SalesforceRecords { get; set; }
 }

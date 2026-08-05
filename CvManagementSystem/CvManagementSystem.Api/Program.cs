@@ -1,5 +1,4 @@
 using FluentValidation;
-using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using UserService.Api.Extensions.Authentication;
 using UserService.Api.Extensions.Authorizations;
@@ -31,6 +30,7 @@ builder.Services.AddAutoMapper(cfg => { }, typeof(UserProfile));
 var corsPolicyName = builder.Services.AddCorsPolicy(builder.Configuration);
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.ConfigureRequestHeaders();
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
@@ -42,7 +42,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsDockerEnvironment())
     await app.EnsureS3BucketExistsAsync();
 }
 
-if (app.Environment.IsDockerEnvironment() || app.Environment.IsProduction())
+if (app.Environment.IsDockerEnvironment() || app.Environment.IsProduction() || app.Environment.IsDevelopment())
 {
     using var scope = app.Services.CreateScope();
     var dbContext = scope.ServiceProvider.GetRequiredService<CvManagementDbContext>();

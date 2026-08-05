@@ -4,7 +4,7 @@ using UserService.Domain.Models.Tokens;
 
 namespace UserService.DataAccess.Configurations;
 
-public class SecureTokenConfiguration<T> : IEntityTypeConfiguration<T> where T : SecureToken
+public class SecureTokenConfiguration<T> : IEntityTypeConfiguration<T> where T : AuthSecureToken
 {
     public void Configure(EntityTypeBuilder<T> builder)
     {

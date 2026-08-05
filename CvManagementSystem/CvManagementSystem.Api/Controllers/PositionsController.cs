@@ -8,6 +8,8 @@ using UserService.Api.Contracts.Positions;
 using UserService.Api.Contracts.Positions.Discussions;
 using UserService.Api.Mapping.Parcing;
 using UserService.Api.Settings;
+using UserService.Application.Abstractions.Authentication;
+using UserService.Application.Abstractions.Authentication.Services;
 using UserService.Application.Abstractions.Sevices;
 using UserService.Application.Abstractions.Utility;
 using UserService.Domain.Abstractions;
@@ -24,7 +26,6 @@ public class PositionsController : ControllerBase
     private readonly IMapper _mapper;
     private readonly IFileStorageService _fileStorageService;
     private readonly IDiscussionService _discussionService;
-    private readonly ISpecificAccessRulesEnforcer _specificAccessRulesEnforcer;
     private readonly IAttributesService _attributesService;
     private readonly DefaultRolePoliciesSettings _defaultRolePoliciesSettings;
 
@@ -32,7 +33,6 @@ public class PositionsController : ControllerBase
         IMapper mapper,
         IFileStorageService fileStorageService,
         IDiscussionService discussionService,
-        ISpecificAccessRulesEnforcer specificAccessRulesEnforcer,
         IAttributesService attributesService,
         IOptions<DefaultRolePoliciesSettings> defaultRolePoliciesSettings)
     {
@@ -40,7 +40,6 @@ public class PositionsController : ControllerBase
         _mapper = mapper;
         _fileStorageService = fileStorageService;
         _discussionService = discussionService;
-        _specificAccessRulesEnforcer = specificAccessRulesEnforcer;
         _attributesService = attributesService;
         _defaultRolePoliciesSettings = defaultRolePoliciesSettings.Value;
     }

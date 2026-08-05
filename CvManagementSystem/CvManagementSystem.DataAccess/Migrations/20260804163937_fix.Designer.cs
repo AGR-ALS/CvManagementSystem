@@ -12,8 +12,8 @@ using UserService.DataAccess.Context;
 namespace UserService.DataAccess.Migrations
 {
     [DbContext(typeof(CvManagementDbContext))]
-    [Migration("20260723081824_initial")]
-    partial class initial
+    [Migration("20260804163937_fix")]
+    partial class fix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,6 +68,23 @@ namespace UserService.DataAccess.Migrations
                     b.HasIndex("TechnologyId");
 
                     b.ToTable("ProjectTechnologies", (string)null);
+                });
+
+            modelBuilder.Entity("UserService.DataAccess.Entitites.SalesforceRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("SalesforceRecords", (string)null);
                 });
 
             modelBuilder.Entity("UserService.Domain.Models.AccessRule", b =>
@@ -292,6 +309,32 @@ namespace UserService.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Positions", (string)null);
+                });
+
+            modelBuilder.Entity("UserService.Domain.Models.PositionApiToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("PositionId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
+
+                    b.HasIndex("Token")
+                        .IsUnique();
+
+                    b.ToTable("PositionApiTokens", (string)null);
                 });
 
             modelBuilder.Entity("UserService.Domain.Models.Project", b =>
@@ -731,6 +774,17 @@ namespace UserService.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("UserService.Domain.Models.PositionApiToken", b =>
+                {
+                    b.HasOne("UserService.Domain.Models.Position", "Position")
+                        .WithOne()
+                        .HasForeignKey("UserService.Domain.Models.PositionApiToken", "PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+                });
+
             modelBuilder.Entity("UserService.Domain.Models.Project", b =>
                 {
                     b.HasOne("UserService.Domain.Models.User", null)
@@ -788,6 +842,10 @@ namespace UserService.DataAccess.Migrations
 
                             b1.Property<string>("PersonalPhoto")
                                 .HasColumnType("text");
+
+                            b1.Property<string>("PhoneNumber")
+                                .HasMaxLength(25)
+                                .HasColumnType("character varying(25)");
 
                             b1.HasKey("UserId");
 

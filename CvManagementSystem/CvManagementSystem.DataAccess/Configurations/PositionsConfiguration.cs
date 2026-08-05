@@ -21,5 +21,6 @@ public class PositionsConfiguration : IEntityTypeConfiguration<Position>
         builder.Property(p=>p.MaxProjects).IsRequired();
         builder.Property(p=>p.Restricted).IsRequired();
         builder.Property(x=>x.Version).IsRequired().IsConcurrencyToken();
+        builder.HasOne<PositionApiToken>().WithOne(x=>x.Position).HasForeignKey<PositionApiToken>(x=>x.PositionId);
     }
 }

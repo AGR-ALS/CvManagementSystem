@@ -10,7 +10,7 @@ using UserService.Domain.Models.Attributes;
 
 namespace UserService.DataAccess.Repositories;
 
-public class PositionsRepository : IPositionsRepository
+public class PositionsRepository : IPositionsRepository, IPositionImportRepository
 {
     private readonly CvManagementDbContext _dbContext;
     private readonly IDiscussionRepository _discussionRepository;
@@ -162,5 +162,19 @@ public class PositionsRepository : IPositionsRepository
     public async Task DeletePositionAsync(Guid[] ids, CancellationToken cancellationToken = default)
     {
         await _dbContext.Positions.Where(x => ids.Contains(x.Id)).ExecuteDeleteAsync(cancellationToken);
+    }
+
+    public async Task<List<Cv>> GetPositionsAndConnectedUsers(Position position, CancellationToken cancellationToken = default)
+    {
+        var cvs = await _dbContext.Cvs
+            .Where(x => x.PositionId == position.Id)
+            .Include(x=>x.User)
+            .ThenInclude(x=>x.Attributes)
+            .ThenInclude(x=>x.AttributeValue)
+            .ToListAsync(cancellationToken);
+        
+        await _optionsRepository.LoadOptionsAsync(position.AccessRules.Select(x=>x.AttributeValue.AttributeDefinition).ToList(), cancellationToken);
+        
+        return cvs;
     }
 }

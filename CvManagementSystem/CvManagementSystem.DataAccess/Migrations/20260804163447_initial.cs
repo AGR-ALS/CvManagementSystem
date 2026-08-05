@@ -57,6 +57,18 @@ namespace UserService.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SalesforceRecords",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SalesforceRecords", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Technologies",
                 columns: table => new
                 {
@@ -106,6 +118,26 @@ namespace UserService.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PositionApiTokens",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    PositionId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Token = table.Column<string>(type: "text", nullable: false),
+                    ExpiresAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PositionApiTokens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PositionApiTokens_Positions_PositionId",
+                        column: x => x.PositionId,
+                        principalTable: "Positions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -113,6 +145,7 @@ namespace UserService.DataAccess.Migrations
                     ProfileData_FirstName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     ProfileData_LastName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     ProfileData_Location = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    ProfileData_PhoneNumber = table.Column<string>(type: "character varying(25)", maxLength: 25, nullable: true),
                     ProfileData_PersonalPhoto = table.Column<string>(type: "text", nullable: true),
                     RoleId = table.Column<Guid>(type: "uuid", nullable: true, defaultValue: new Guid("06af8b49-9a2a-4017-af1d-c2d0ef25ec45")),
                     IsBlocked = table.Column<bool>(type: "boolean", nullable: false),
@@ -197,8 +230,8 @@ namespace UserService.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", maxLength: 36, nullable: false),
                     Token = table.Column<string>(type: "text", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", maxLength: 36, nullable: false),
-                    ExpiresAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    ExpiresAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", maxLength: 36, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -294,8 +327,8 @@ namespace UserService.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", maxLength: 36, nullable: false),
                     Token = table.Column<string>(type: "text", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", maxLength: 36, nullable: false),
-                    ExpiresAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    ExpiresAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", maxLength: 36, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -678,6 +711,18 @@ namespace UserService.DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_PositionApiTokens_PositionId",
+                table: "PositionApiTokens",
+                column: "PositionId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PositionApiTokens_Token",
+                table: "PositionApiTokens",
+                column: "Token",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PositionTechnologies_TechnologyId",
                 table: "PositionTechnologies",
                 column: "TechnologyId");
@@ -696,6 +741,12 @@ namespace UserService.DataAccess.Migrations
                 name: "IX_RefreshTokens_UserId",
                 table: "RefreshTokens",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SalesforceRecords_Id",
+                table: "SalesforceRecords",
+                column: "Id",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserAttributeValues_UserId",
@@ -756,6 +807,9 @@ namespace UserService.DataAccess.Migrations
                 name: "PeriodAttributeValues");
 
             migrationBuilder.DropTable(
+                name: "PositionApiTokens");
+
+            migrationBuilder.DropTable(
                 name: "PositionTechnologies");
 
             migrationBuilder.DropTable(
@@ -763,6 +817,9 @@ namespace UserService.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "RefreshTokens");
+
+            migrationBuilder.DropTable(
+                name: "SalesforceRecords");
 
             migrationBuilder.DropTable(
                 name: "StringAttributeValues");

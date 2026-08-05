@@ -5,8 +5,10 @@ using CvManagementSystem.Infrastructure.Authentication.Jwt;
 using CvManagementSystem.Infrastructure.Authentication.RefreshTokens;
 using CvManagementSystem.Infrastructure.Authentication.Tokens.Settings;
 using CvManagementSystem.Infrastructure.Files;
+using CvManagementSystem.Infrastructure.Integrations.Settings;
 using CvManagementSystem.Infrastructure.Mail.Content;
 using CvManagementSystem.Infrastructure.MessageEvents.Settings;
+using UserService.Domain.Models;
 
 namespace UserService.Api.Extensions.Services;
 
@@ -27,5 +29,9 @@ public static class OptionsConfiguringExtension
         services.Configure<AccountConfirmationTokenSettings>(configuration.GetSection(nameof(AccountConfirmationTokenSettings)));
         services.Configure<AccountConfirmationSettings>(configuration.GetSection(nameof(AccountConfirmationSettings)));
         services.Configure<S3StorageSettings>(configuration.GetSection(nameof(S3StorageSettings)));
+        services.Configure<SalesforceSettings>(configuration.GetSection(nameof(SalesforceSettings)));
+        services.Configure<PositionApiTokenSettings>(configuration.GetSection(nameof(PositionApiTokenSettings)));
+        services.Configure<DropBoxSettings>(configuration.GetSection(nameof(DropBoxSettings)));
+        services.Configure<SupportTicketSettings>(configuration.GetSection(nameof(SupportTicketSettings)));
     }
 }
