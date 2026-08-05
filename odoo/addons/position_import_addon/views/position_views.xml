@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_position_list" model="ir.ui.view">
+        <field name="name">position.list</field>
+        <field name="model">position</field>
+        <field name="arch" type="xml">
+            <list create="true" edit="false" import="false" export_xlsx="false">
+                <field name="title"/>
+                <field name="description"/>
+                <field name="expertise_level"/>
+                <field name="created_at"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_position_form" model="ir.ui.view">
+        <field name="name">position.form</field>
+        <field name="model">position</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_import" type="object" string="Import Data from the System" class="btn-primary" invisible="title"/>
+                    <button name="action_import" type="object" string="Update Data" class="btn-secondary" invisible="not title"/>
+                </header>
+
+                <sheet>
+                    <group string="Integration Setup" invisible="title">
+                        <field name="api_token" required="not title"/>
+                    </group>
+
+                    <group string="Position Details" invisible="not title">
+                        <group>
+                            <field name="title" readonly="1"/>
+                            <field name="expertise_level" readonly="1"/>
+                            <field name="max_projects" readonly="1"/>
+                            <field name="restricted_display" readonly="1"/>
+                        </group>
+
+                        <group>
+                            <field name="created_at" readonly="1"/>
+                            <field name="technologies" readonly="1"/>
+                            <field name="backend_id" readonly="1" invisible="1"/>
+                        </group>
+                    </group>
+
+                    <group invisible="not title">
+                        <field name="description" readonly="1" nolabel="1"/>
+                    </group>
+
+                    <notebook invisible="not title">
+                        <page string="Requirements">
+                            <field name="access_rule_ids" readonly="1">
+                                <list>
+                                    <field name="attribute_name"/>
+                                    <field name="attribute_data_type"/>
+                                    <field name="filter_operator"/>
+                                    <field name="value"/>
+                                    <field
+                                        name="aggregated_value"
+                                        string="AggregatedValue"
+                                        help="Aggregated value is taken from submitted CVs and calculated as the average for numeric values, the most common value for strings, text, booleans, dates, and options, image presence for images, and the longest time period for periods."
+                                    />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_positions" model="ir.actions.act_window">
+        <field name="name"> </field>
+        <field name="res_model">position</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_position_root" name="Position Viewer"/>
+    <menuitem id="menu_position_positions" name="Positions" parent="menu_position_root" action="action_positions"/>
+</odoo>
