@@ -27,13 +27,9 @@ public class SalesforceService : ISalesforceService
     public async Task CreateCustomerAsync(SalesforceContact contact, SalesforceAccount account, CancellationToken cancellationToken = default)
     {
         var httpClient = _httpClientFactory.CreateClient();
-        Console.WriteLine("1");
         var token = await GetAccessTokenAsync(httpClient);
-        Console.WriteLine("2");
         var accountId = await CreateAccountAsync(token, account, httpClient);
-        Console.WriteLine("3");
         await CreateContactAsync(token, accountId, contact, httpClient);
-        Console.WriteLine("4");
     }
 
     public async Task CreateCreationRecordAsync(Guid userId, CancellationToken cancellationToken = default)
@@ -64,20 +60,12 @@ public class SalesforceService : ISalesforceService
             }
         };
         
-        Console.WriteLine("OLOLOLOLO2L");
-        Console.WriteLine(_settings.LoginUrl);
         var response = await httpClient.PostAsync(
             $"{_settings.LoginUrl}/services/oauth2/token",
             new FormUrlEncodedContent(requestData)
         );
-        Console.WriteLine("OLOLOLOLO2L3");
+        response.EnsureSuccessStatusCode();
         var responseBody = await response.Content.ReadAsStringAsync();
-        Console.WriteLine("OLOLOLOLOL");
-        Console.WriteLine(responseBody);
-        if (!response.IsSuccessStatusCode)
-        {
-            throw new Exception($"Error occured while getting oauth token: {responseBody}");
-        }
         
         var token =
             JsonSerializer.Deserialize<SalesforceTokenResponse>(
@@ -86,8 +74,7 @@ public class SalesforceService : ISalesforceService
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
                 });
-
-
+        
         return token?? throw new Exception("Token deserialization returned null");
     }
 
@@ -123,13 +110,9 @@ public class SalesforceService : ISalesforceService
             );
 
         var response = await httpClient.SendAsync(request);
+        response.EnsureSuccessStatusCode();
         
         var responseBody = await response.Content.ReadAsStringAsync();
-
-        if (!response.IsSuccessStatusCode)
-        {
-            throw new Exception($"Error occured while creating salesforce account: {responseBody}");
-        }
         
         var result =
             JsonSerializer.Deserialize<SalesforceCreateResponse>(
@@ -138,8 +121,7 @@ public class SalesforceService : ISalesforceService
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
                 });
-
-
+        
         return result?.Id ?? throw new Exception("Account creation deserialization returned null");
     }
     
@@ -176,13 +158,9 @@ public class SalesforceService : ISalesforceService
         
         var response =
             await httpClient.SendAsync(request);
+        response.EnsureSuccessStatusCode();
         
         var responseBody =
             await response.Content.ReadAsStringAsync();
-
-        if (!response.IsSuccessStatusCode)
-        {
-            throw new Exception($"Error occured while creating salesforce contact: {responseBody}");
-        }
     }
 }
